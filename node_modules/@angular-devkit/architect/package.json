@@ -1,0 +1,31 @@
+{
+  "name": "@angular-devkit/architect",
+  "version": "0.6.8",
+  "description": "Angular Build Facade",
+  "main": "src/index.js",
+  "typings": "src/index.d.ts",
+  "dependencies": {
+    "@angular-devkit/core": "0.6.8",
+    "rxjs": "^6.0.0"
+  },
+  "keywords": [
+    "angular",
+    "devkit",
+    "sdk",
+    "Angular DevKit"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/angular/devkit.git"
+  },
+  "engines": {
+    "node": ">= 8.9.0",
+    "npm": ">= 5.5.1"
+  },
+  "author": "Angular Authors",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/angular/devkit/issues"
+  },
+  "homepage": "https://github.com/angular/devkit"
+}
