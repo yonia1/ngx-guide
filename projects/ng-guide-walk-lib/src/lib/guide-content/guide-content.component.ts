@@ -20,7 +20,7 @@ export class GuideContentComponent implements OnInit, OnDestroy {
   @Input() positionFixed = false;
   @Input() eventsEnabled = true;
   @Input() target: string | Element;
-  @Input() location: WalkLocation = 'bottom';
+  @Input() location: WalkLocation = 'top';
 
   @Input() set step(step: number) {
     this._step = GuideUtils.toNumber(step);
@@ -64,7 +64,7 @@ export class GuideContentComponent implements OnInit, OnDestroy {
     return this.guideService.isLast(this.step);
   }
   done() {
-    this.currentAction = 'stop';
+    this.guideService.stopGuide();
   }
   private getNode(): Element {
     if (this.target) {

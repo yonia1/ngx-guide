@@ -1,12 +1,13 @@
-<!--<div class="tooltip-container" (animationend)="animationDone($event)">
+<div class="angular-popper" [class.visible]="show">
+
   <ng-content></ng-content>
   <hr>
-  <button (click)="next()"> {{isLast() ? 'Done' : 'Next'}} </button>
-  <button *ngIf="!isLast()" (click)="done()"> Finish </button>
-</div>-->
-<div class="tooltiptext">
-  <div ><ng-content></ng-content></div>
-  <hr>
-  <button (click)="next()"> {{isLast() ? 'Done 123' : 'Next'}} </button>
-  <button *ngIf="!isLast()" (click)="done()"> Finish </button>
+  
+  <button type="button" class="angular-popper__close" (click)="next()">
+    next
+  </button>
+  <button type="button" class="angular-popper__close" (click)="done()">
+    close
+  </button>
+  <div class="angular-popper__arrow" x-arrow></div>
 </div>
