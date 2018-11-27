@@ -10,12 +10,9 @@ import {
 } from '@angular/core';
 import { NgGuideWalkLibService } from './ng-guide-walk-lib.service';
 import { toNumber, unsignedOnDestroyed } from './utils';
-import { NgGuideWalkLibComponent } from './ng-guide-walk-lib.component';
 import { WalkEvent } from './ng-guide.types';
 import { takeUntil } from 'rxjs/operators';
-import { GuideContentComponent } from './guide-content/guide-content.component';
-import { Overlay, OverlayConfig, OriginConnectionPosition } from '@angular/cdk/overlay';
-import { ComponentPortal } from '@angular/cdk/portal';
+import { GuideContentComponent, WalkLocation } from './guide-content/guide-content.component';
 
 
 
@@ -27,6 +24,7 @@ export class NgGuideStepDirective implements OnInit, OnDestroy {
   position = 'below';
 
   private _step: number = 1;
+
   @Input('ngGuideStep') set step(stepNumber: number | string) {
     this._step = toNumber(stepNumber);
   }
@@ -34,9 +32,11 @@ export class NgGuideStepDirective implements OnInit, OnDestroy {
     return this._step;
   }
   @Input('ngGuideStepContent') ngGuideStepContent: string | TemplateRef<any> | Type<any>;
+
+  @Input('ngGuideStepLocation') ngGuideStepLocation: WalkLocation = 'bottom';
+  @Input('ngGuideStepStyle') ngGuideStepStyle: {[key: string]: string} | null= null;
   private componentRef: ComponentRef<GuideContentComponent>;
   constructor(
-    private overlay: Overlay,
     private elementRef: ElementRef,
     private viewContainerRef: ViewContainerRef,
     private renderer: Renderer2,
@@ -53,7 +53,8 @@ export class NgGuideStepDirective implements OnInit, OnDestroy {
     this.walkLibService.unregister();
   }
   private closeComponent() {
-    if (this.componentRef) { this.componentRef.destroy(); }
+    if (!this.componentRef) { return; }
+    this.componentRef.destroy();
     this.componentRef = null;
   }
   private createComponent() {
@@ -62,7 +63,16 @@ export class NgGuideStepDirective implements OnInit, OnDestroy {
     this.componentRef = this.viewContainerRef.createComponent(factory, null, null, content);
     this.componentRef.instance.step = this.step as number;
     this.componentRef.instance.target = this.elementRef.nativeElement;
+    this.componentRef.instance.location = this.ngGuideStepLocation || 'bottom';
+    debugger;
+    if (this.ngGuideStepStyle){
+      this.componentRef.instance.customCss = this.ngGuideStepStyle;
+    }
     this.elementRef.nativeElement.focus();
+    this.elementRef.nativeElement.classList.add('overlay');
+    this.componentRef.onDestroy(()=>{
+      this.elementRef.nativeElement.classList.remove('overlay');
+    });
   }
   generateNgContent() {
     // Content is string

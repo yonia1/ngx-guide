@@ -1,5 +1,7 @@
-<div class="angular-popper" [class.visible]="show">
-
+<div class="angular-popper"
+[ngStyle]="customCss"
+[class.visible]="show">
+ 
   <ng-content></ng-content>
   <hr>
   
@@ -7,7 +9,8 @@
     next
   </button>
   <button type="button" class="angular-popper__close" (click)="done()">
-    close
+    done
   </button>
+  
   <div class="angular-popper__arrow" x-arrow></div>
 </div>

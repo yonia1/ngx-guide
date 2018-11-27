@@ -10,10 +10,16 @@ import { TestCompComponent } from './test-comp/test-comp.component';
 })
 export class AppComponent {
   title = 'app';
+  customStyle = {
+    'background-color': 'red',
+    'color' : 'green',
+    'border-radius': '50%'
+  };
   constructor(private guideSerivce: NgGuideWalkLibService) {
     setTimeout(() => this.guideSerivce.startGuide(), 2000);
   }
   getComp(){
     return TestCompComponent
   }
+  
 }

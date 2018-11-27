@@ -1,12 +1,14 @@
 .angular-popper {
   position: absolute;
-  background: #FFC107;
-  color: black;
+  background:  #FFC107;
+  color: white;
+  opacity: 0.85;
   width: 150px;
   border-radius: 3px;
   box-shadow: 0 0 2px rgba(0,0,0,0.5);
   padding: 10px;
   text-align: center;
+  z-index: 9999;
 }
 
 .angular-popper:not(.visible) {
@@ -19,6 +21,7 @@
   border-style: solid;
   border-color: #FFC107;
   position: absolute;
+  // z-index: 9999;
   margin: 5px;
 }
 
@@ -80,4 +83,12 @@
   top: calc(50% - 5px);
   margin-left: 0;
   margin-right: 0;
+}
+
+.overlay {
+  padding: 10px;
+  z-index: 0px;
+  box-shadow: 0 0 0 100vmax rgba(0,0,0, .5);
+ //  border-radius:20%;
+  // transition: 0.35s box-shadow
 }
