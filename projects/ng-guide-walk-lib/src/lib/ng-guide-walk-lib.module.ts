@@ -7,8 +7,7 @@ import { GuideContentComponent } from './guide-content/guide-content.component';
 
 @NgModule({
   imports: [
-    CommonModule,
-    OverlayModule
+    CommonModule
   ],
   entryComponents: [GuideContentComponent],
   declarations: [NgGuideWalkLibComponent, NgGuideStepDirective, GuideContentComponent],
