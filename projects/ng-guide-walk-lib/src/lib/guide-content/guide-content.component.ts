@@ -23,6 +23,7 @@ export class GuideContentComponent implements OnInit, OnDestroy {
   @Input() eventsEnabled = true;
   @Input() target: string | Element;
   @Input() location: WalkLocation = 'right';
+  @Input() displayArrow: boolean = true;
   @Input() customCss: { [key: string]: string } = null;
   @Input() set step(step: number) {
     this._step = GuideUtils.toNumber(step);
@@ -44,10 +45,10 @@ export class GuideContentComponent implements OnInit, OnDestroy {
     // todo : move to an action trigger when needed
 
     const { location, positionFixed, eventsEnabled, modifiers } = this;
-
+  
     this.popper = new Popper(
       this.getNode(),
-      this._element.nativeElement.querySelector('.angular-popper'),
+      this._element.nativeElement.querySelector('.ngx-guide'),
       <any>{
         placement: location,
         positionFixed,
@@ -55,11 +56,6 @@ export class GuideContentComponent implements OnInit, OnDestroy {
         modifiers
       }
     );
-
-    this.handleOverlay();
-    //  document.getElementsByTagName('body')[0].appendChild(this.overlayObject);
-    //   const root = this._renderer.selectRootElement(this._element.nativeElement);
-
   }
 
   ngOnDestroy() {
@@ -86,17 +82,6 @@ export class GuideContentComponent implements OnInit, OnDestroy {
       }
     } else {
       return this._element.nativeElement;
-    }
-  }
-  private handleOverlay() {
-    if (!this.shouldCreateOverlay) { return; }
-
-    if (!this.overlayObject) {
-      this.overlayObject = document.createElement('div');
-      this.overlayObject.setAttribute('id', 'overlay');
-      document.getElementsByTagName('body')[0].appendChild(this.overlayObject);
-    } else {
-      document.getElementsByTagName('body')[0].appendChild(this.overlayObject);
     }
   }
   private clean() {

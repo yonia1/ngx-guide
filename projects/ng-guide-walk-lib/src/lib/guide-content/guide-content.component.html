@@ -1,16 +1,16 @@
-<div class="angular-popper"
+<div class="ngx-guide"
 [ngStyle]="customCss"
 [class.visible]="show">
  
   <ng-content></ng-content>
   <hr>
   
-  <button type="button" class="angular-popper__close" (click)="next()">
+  <button type="button" class="ngx-guide__close" (click)="next()">
     next
   </button>
-  <button type="button" class="angular-popper__close" (click)="done()">
+  <button type="button" class="ngx-guide__close" (click)="done()">
     done
   </button>
   
-  <div class="angular-popper__arrow" x-arrow></div>
+  <div *ngIf="displayArrow" [ngStyle]="customCss" class="ngx-guide__arrow" x-arrow></div>
 </div>

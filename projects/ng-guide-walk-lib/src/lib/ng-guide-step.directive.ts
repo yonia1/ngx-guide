@@ -34,7 +34,9 @@ export class NgGuideStepDirective implements OnInit, OnDestroy {
   @Input('ngGuideStepContent') ngGuideStepContent: string | TemplateRef<any> | Type<any>;
 
   @Input('ngGuideStepLocation') ngGuideStepLocation: WalkLocation = 'bottom';
-  @Input('ngGuideStepStyle') ngGuideStepStyle: {[key: string]: string} | null= null;
+  @Input('ngGuideStepStyle') ngGuideStepStyle: { [key: string]: string } | null = null;
+  @Input('ngGuideStepDisplayArrow') ngGuideStepDisplayArrow: boolean = true;
+  @Input('ngGuideStepFocusElement') ngGuideStepFocusElement: boolean = true;
   private componentRef: ComponentRef<GuideContentComponent>;
   constructor(
     private elementRef: ElementRef,
@@ -60,19 +62,11 @@ export class NgGuideStepDirective implements OnInit, OnDestroy {
   private createComponent() {
     const factory = this.resolver.resolveComponentFactory(GuideContentComponent);
     const content = this.generateNgContent();
-    this.componentRef = this.viewContainerRef.createComponent(factory, null, null, content);
-    this.componentRef.instance.step = this.step as number;
-    this.componentRef.instance.target = this.elementRef.nativeElement;
-    this.componentRef.instance.location = this.ngGuideStepLocation || 'bottom';
-    debugger;
-    if (this.ngGuideStepStyle){
-      this.componentRef.instance.customCss = this.ngGuideStepStyle;
-    }
-    this.elementRef.nativeElement.focus();
-    this.elementRef.nativeElement.classList.add('overlay');
-    this.componentRef.onDestroy(()=>{
-      this.elementRef.nativeElement.classList.remove('overlay');
-    });
+    this.componentRef = this.viewContainerRef.createComponent(factory, 0, null, content);
+    this.setInputs();
+    
+    this.handleFocus();
+    this.handleOverlay();
   }
   generateNgContent() {
     // Content is string
@@ -91,11 +85,33 @@ export class NgGuideStepDirective implements OnInit, OnDestroy {
     const viewRef = factory.create(this.injector);
     return [[viewRef.location.nativeElement]];
   }
-
+  private setInputs() {
+    const instanceRef = this.componentRef.instance;
+    instanceRef.step = this.step as number;
+    instanceRef.target = this.elementRef.nativeElement;
+    instanceRef.location = this.ngGuideStepLocation || 'bottom';
+    instanceRef.displayArrow = this.ngGuideStepDisplayArrow;
+    if (this.ngGuideStepStyle) {
+      instanceRef.customCss = this.ngGuideStepStyle;
+    }
+  }
   private subscribeToGuideRequest() {
     this.walkLibService.getStepObservable(<number>this.step)
       .pipe(takeUntil(unsignedOnDestroyed(this)))
       .subscribe((walkEvent: WalkEvent) => walkEvent.event === 'open' ? this.createComponent() : this.closeComponent());
+  }
+
+  private handleOverlay() {
+    this.renderer.addClass(this.elementRef.nativeElement, 'overlay');
+    // this.elementRef.nativeElement.classList.add('overlay');
+    this.componentRef.onDestroy(() => {
+      this.renderer.removeClass(this.elementRef.nativeElement, 'overlay');
+    });
+  }
+  private handleFocus() {
+    if (this.ngGuideStepFocusElement) {
+      this.elementRef.nativeElement.focus();
+    }
   }
 
 
