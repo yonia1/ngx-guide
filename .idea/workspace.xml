@@ -1,20 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2d8e2a8c-59c6-4ba2-8da5-ab6b78719860" name="Default" comment="" />
+    <list default="true" id="2d8e2a8c-59c6-4ba2-8da5-ab6b78719860" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ng-guide-walk-lib/src/lib/ng-guide-step.directive.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ng-guide-walk-lib/src/lib/ng-guide-step.directive.ts" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/dist/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="1929517759">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.open.time.4" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="html" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="HTML" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.js.language.service.starts">
+        <counts>
+          <entry key="Angular2LanguageService" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="html" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="HTML" value="1" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/dist/ng-guide-walk-lib-app/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="110">
+              <caret line="5" column="42" selection-start-line="5" selection-start-column="42" selection-end-line="5" selection-end-column="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -41,6 +89,7 @@
         <option value="$PROJECT_DIR$/src/tsconfig.app.json" />
         <option value="$PROJECT_DIR$/tsconfig.json" />
         <option value="$PROJECT_DIR$/projects/ng-guide-walk-lib/src/lib/ng-guide-walk-step.directive.ts" />
+        <option value="$PROJECT_DIR$/dist/ng-guide-walk-lib-app/index.html" />
       </list>
     </option>
   </component>
@@ -58,17 +107,78 @@
   </component>
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/node_modules" />
+    <handled-path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules" />
   </component>
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths>
       <path value="$PROJECT_DIR$/package.json" />
-      <path value="$PROJECT_DIR$/projects/example-ng6-lib/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/animations/browser/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/animations/browser/testing/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/animations/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/cdk/a11y/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/cdk/accordion/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/cdk/bidi/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/cdk/coercion/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/cdk/collections/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/cdk/drag-drop/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/cdk/keycodes/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/cdk/layout/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/cdk/observers/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/cdk/overlay/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/cdk/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/cdk/platform/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/cdk/portal/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/cdk/scrolling/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/cdk/stepper/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/cdk/table/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/cdk/text-field/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/cdk/tree/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/material/autocomplete/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/material/badge/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/material/bottom-sheet/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/material/button-toggle/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/material/button/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/material/card/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/material/checkbox/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/material/chips/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/material/core/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/material/datepicker/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/material/dialog/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/material/divider/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/material/expansion/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/material/form-field/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/material/grid-list/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/material/icon/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/material/input/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/material/list/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/material/menu/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/material/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/material/paginator/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/material/progress-bar/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/material/progress-spinner/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/material/radio/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/material/select/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/material/sidenav/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/material/slide-toggle/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/material/slider/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/material/snack-bar/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/material/sort/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/material/stepper/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/material/table/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/material/tabs/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/material/toolbar/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/material/tooltip/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/@angular/material/tree/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/parse5/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/node_modules/tslib/package.json" />
+      <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="y" value="23" />
-    <option name="width" value="1440" />
-    <option name="height" value="822" />
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="x" value="1440" />
+    <option name="y" value="-300" />
+    <option name="width" value="1920" />
+    <option name="height" value="1200" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -82,6 +192,17 @@
             <path>
               <item name="ng-guide-walk-lib" type="b2602c69:ProjectViewProjectNode" />
               <item name="ng-guide-walk-lib" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ng-guide-walk-lib" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ng-guide-walk-lib" type="462c0819:PsiDirectoryNode" />
+              <item name="dist" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ng-guide-walk-lib" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ng-guide-walk-lib" type="462c0819:PsiDirectoryNode" />
+              <item name="dist" type="462c0819:PsiDirectoryNode" />
+              <item name="ng-guide-walk-lib-app" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ng-guide-walk-lib" type="b2602c69:ProjectViewProjectNode" />
@@ -111,7 +232,7 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="settings.editor.selected.configurable" value="settings.typescriptcompiler" />
-    <property name="ts.external.directory.path" value="$USER_HOME$/.nvm/versions/node/v10.1.0/lib/node_modules/typescript/lib" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -124,6 +245,16 @@
         </RuleState>
       </list>
     </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="index.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ng-guide-walk-lib/dist/ng-guide-walk-lib-app/index.html">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.index.html" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -141,34 +272,36 @@
       <workItem from="1541185382615" duration="552000" />
       <workItem from="1541186815639" duration="19000" />
       <workItem from="1541318513736" duration="17000" />
+      <workItem from="1543908267309" duration="147000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6068000" />
+    <option name="totallyTimeSpent" value="6215000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="822" extended-state="0" />
+    <frame x="1440" y="-300" width="1920" height="1200" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24947146" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32863188" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1864139" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.36812413" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="TypeScript" order="7" weight="0.32863188" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info id="npm" order="2" side_tool="true" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32863188" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="TypeScript" order="8" weight="0.32863188" />
+      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.23518851" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="11" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -178,36 +311,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/projects/ng-guide-walk-lib/package.json" />
-    <entry file="file://$PROJECT_DIR$/projects/ng-guide-walk-lib/tsconfig.lib.json" />
-    <entry file="file://$PROJECT_DIR$/package.json" />
-    <entry file="file://$PROJECT_DIR$/src/tsconfig.app.json" />
-    <entry file="file://$PROJECT_DIR$/projects/ng-guide-walk-lib/src/public_api.ts" />
-    <entry file="file://$PROJECT_DIR$/projects/ng-guide-walk-lib/src/lib/ng-guide-walk-lib.component.ts" />
-    <entry file="file://$PROJECT_DIR$/projects/ng-guide-walk-lib/src/test.ts" />
-    <entry file="file://$PROJECT_DIR$/tsconfig.json" />
-    <entry file="file://$PROJECT_DIR$/projects/ng-guide-walk-lib/ng-package.json" />
-    <entry file="file://$PROJECT_DIR$/projects/ng-guide-walk-lib/src/lib/ng-guide-walk-step.directive.ts" />
-    <entry file="file://$PROJECT_DIR$/projects/ng-guide-walk-lib/package.json" />
-    <entry file="file://$PROJECT_DIR$/projects/ng-guide-walk-lib/tsconfig.lib.json" />
-    <entry file="file://$PROJECT_DIR$/src/tsconfig.app.json" />
-    <entry file="file://$PROJECT_DIR$/projects/ng-guide-walk-lib/src/public_api.ts" />
-    <entry file="file://$PROJECT_DIR$/projects/ng-guide-walk-lib/src/test.ts" />
-    <entry file="file://$PROJECT_DIR$/tsconfig.json" />
-    <entry file="file://$PROJECT_DIR$/projects/ng-guide-walk-lib/src/lib/ng-guide-walk-step.directive.ts" />
-    <entry file="file://$PROJECT_DIR$/projects/ng-guide-walk-lib/ng-package.json" />
-    <entry file="file://$PROJECT_DIR$/src/app/app.component.ts" />
-    <entry file="file://$PROJECT_DIR$/package.json" />
-    <entry file="file://$PROJECT_DIR$/projects/ng-guide-walk-lib/package.json" />
-    <entry file="file://$PROJECT_DIR$/package.json" />
-    <entry file="file://$PROJECT_DIR$/projects/ng-guide-walk-lib/tsconfig.lib.json" />
-    <entry file="file://$PROJECT_DIR$/tsconfig.json" />
-    <entry file="file://$PROJECT_DIR$/src/app/app.module.ts" />
-    <entry file="file://$PROJECT_DIR$/projects/ng-guide-walk-lib/src/lib/ng-guide-walk-lib.component.ts" />
-    <entry file="file://$PROJECT_DIR$/projects/ng-guide-walk-lib/src/lib/ng-guide-walk-lib.module.ts" />
-    <entry file="file://$PROJECT_DIR$/projects/ng-guide-walk-lib/src/lib/ng-guide-walk-step.directive.ts" />
-    <entry file="file://$PROJECT_DIR$/projects/ng-guide-walk-lib/ng-package.json" />
-    <entry file="file://$PROJECT_DIR$/src/app/app.component.ts" />
     <entry file="file://$PROJECT_DIR$/angular.json" />
     <entry file="file://$PROJECT_DIR$/projects/ng-guide-walk-lib/src/lib/ng-guide-walk-lib.service.ts" />
     <entry file="file://$PROJECT_DIR$/projects/ng-guide-walk-lib/ng-package.prod.json" />
@@ -229,5 +332,12 @@
     <entry file="file://$PROJECT_DIR$/projects/ng-guide-walk-lib/src/lib/ng-guide-walk-lib.component.ts" />
     <entry file="file://$PROJECT_DIR$/projects/ng-guide-walk-lib/src/lib/ng-guide-walk-step.directive.ts" />
     <entry file="file://$PROJECT_DIR$/projects/ng-guide-walk-lib/src/test.ts" />
+    <entry file="file://$PROJECT_DIR$/dist/ng-guide-walk-lib-app/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="5" column="42" selection-start-line="5" selection-start-column="42" selection-end-line="5" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>

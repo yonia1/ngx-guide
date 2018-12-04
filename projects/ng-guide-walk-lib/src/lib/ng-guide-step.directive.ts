@@ -68,6 +68,7 @@ export class NgGuideStepDirective implements OnInit, OnDestroy {
     this.handleFocus();
     this.handleOverlay();
   }
+
   generateNgContent() {
     // Content is string
     if (typeof this.ngGuideStepContent === 'string') {
