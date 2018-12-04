@@ -1,7 +1,8 @@
 # NgGuideWalkLibApp
 
 Create a custimize guide to your website 
-Install 
+
+Install: 
 yarn:
 ```javascript
  add ng-guide-walk-lib-app
@@ -11,7 +12,7 @@ npm:
  install ng-guide-walk-lib-app -s
  ```
 
-[Demo](https://yonia1.github.io/ngx-guide/dist/ng-guide-walk-lib-app/index.html)
+[See Demo here](https://yonia1.github.io/ngx-guide/dist/ng-guide-walk-lib-app/index.html)
 
 After install add the module NgGuideWalkLibModule: 
 
