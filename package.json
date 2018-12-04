@@ -1,6 +1,6 @@
 {
   "name": "ng-guide-walk-lib-app",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "homepage": "https://github.com/yonia1/ngx-guide",
   "author": {"name": "Yoni Amishav", "email": "amishav@gmail.com"},
   "license": "MIT",

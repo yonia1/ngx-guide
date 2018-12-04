@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2d8e2a8c-59c6-4ba2-8da5-ab6b78719860" name="Default" comment="" />
+    <list default="true" id="2d8e2a8c-59c6-4ba2-8da5-ab6b78719860" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ng-guide-walk-lib/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ng-guide-walk-lib/package.json" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/dist/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -170,11 +174,9 @@
       <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="1727" />
-    <option name="y" value="-105" />
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="width" value="1440" />
-    <option name="height" value="822" />
+    <option name="height" value="900" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -265,7 +267,8 @@
     <option name="totallyTimeSpent" value="6521000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1727" y="-105" width="1440" height="822" extended-state="1" />
+    <frame x="0" y="23" width="1440" height="813" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24947146" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -280,7 +283,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="TypeScript" order="8" weight="0.32863188" />
-      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.3669468" />
+      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.3716312" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="11" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />

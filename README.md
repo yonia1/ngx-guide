@@ -60,8 +60,14 @@ For Custom style:
   };
 
   ```
+Inject the guide service into your component and just trigger the guide when ever you want:
 
+```javascript
+constructor(private guideSerivce: NgGuideWalkLibService) {
+    setTimeout(() => this.guideSerivce.startGuide(), 2000);
+  }
 
+```  
 
   And you are done!
 
