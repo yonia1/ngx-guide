@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2d8e2a8c-59c6-4ba2-8da5-ab6b78719860" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects/ng-guide-walk-lib/src/lib/ng-guide-step.directive.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ng-guide-walk-lib/src/lib/ng-guide-step.directive.ts" afterDir="false" />
-    </list>
+    <list default="true" id="2d8e2a8c-59c6-4ba2-8da5-ab6b78719860" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/dist/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -56,8 +52,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/dist/ng-guide-walk-lib-app/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="5" column="42" selection-start-line="5" selection-start-column="42" selection-end-line="5" selection-end-column="42" />
+            <state relative-caret-position="132">
+              <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -174,11 +170,11 @@
       <path value="$PROJECT_DIR$/projects/ng-guide-walk-lib/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="x" value="1440" />
-    <option name="y" value="-300" />
-    <option name="width" value="1920" />
-    <option name="height" value="1200" />
+  <component name="ProjectFrameBounds" extendedState="1">
+    <option name="x" value="1727" />
+    <option name="y" value="-105" />
+    <option name="width" value="1440" />
+    <option name="height" value="822" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -203,17 +199,6 @@
               <item name="ng-guide-walk-lib" type="462c0819:PsiDirectoryNode" />
               <item name="dist" type="462c0819:PsiDirectoryNode" />
               <item name="ng-guide-walk-lib-app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ng-guide-walk-lib" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ng-guide-walk-lib" type="462c0819:PsiDirectoryNode" />
-              <item name="node_modules" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ng-guide-walk-lib" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ng-guide-walk-lib" type="462c0819:PsiDirectoryNode" />
-              <item name="node_modules" type="462c0819:PsiDirectoryNode" />
-              <item name="@types" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -272,18 +257,17 @@
       <workItem from="1541185382615" duration="552000" />
       <workItem from="1541186815639" duration="19000" />
       <workItem from="1541318513736" duration="17000" />
-      <workItem from="1543908267309" duration="147000" />
+      <workItem from="1543908267309" duration="453000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6215000" />
+    <option name="totallyTimeSpent" value="6521000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1440" y="-300" width="1920" height="1200" extended-state="0" />
-    <editor active="true" />
+    <frame x="1727" y="-105" width="1440" height="822" extended-state="1" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1864139" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24947146" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -296,7 +280,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="TypeScript" order="8" weight="0.32863188" />
-      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.23518851" />
+      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.3669468" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="11" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -334,8 +318,8 @@
     <entry file="file://$PROJECT_DIR$/projects/ng-guide-walk-lib/src/test.ts" />
     <entry file="file://$PROJECT_DIR$/dist/ng-guide-walk-lib-app/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="5" column="42" selection-start-line="5" selection-start-column="42" selection-end-line="5" selection-end-column="42" />
+        <state relative-caret-position="132">
+          <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
         </state>
       </provider>
     </entry>

@@ -1,6 +1,10 @@
 {
   "name": "ng-guide-walk-lib-app",
-  "version": "0.0.0",
+  "version": "0.0.2",
+  "homepage": "https://github.com/yonia1/ngx-guide",
+  "author": {"name": "Yoni Amishav", "email": "amishav@gmail.com"},
+  "license": "MIT",
+
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -9,7 +13,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
-  "private": true,
+
   "dependencies": {
     "@angular/animations": "^6.0.0",
     "@angular/common": "^6.0.0",

@@ -1,7 +1,9 @@
 # NgGuideWalkLibApp
 
 Create a custimize guide to your website 
-
+Install 
+Yarn add ng-guide-walk-lib-app
+npm install ng-guide-walk-lib-app -s
 Demo : https://yonia1.github.io/ngx-guide/dist/ng-guide-walk-lib-app/index.html
 
 After install add the module NgGuideWalkLibModule: 
@@ -41,3 +43,14 @@ For Custom style:
   ngGuideStep="1" ngGuideStepContent="this is step 1" ngGuideStepLocation='bottom'>
 
   ```
+  In the Component just add the css rules you would like to use 
+```javascript
+   customStyle = {
+    'background-color': 'red',
+    'color' : 'green',
+    'border-radius': '50%'
+  };
+
+  ```
+
+  And you are done!
