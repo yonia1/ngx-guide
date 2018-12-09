@@ -64,7 +64,6 @@ export class NgGuideStepDirective implements OnInit, OnDestroy {
     const content = this.generateNgContent();
     this.componentRef = this.viewContainerRef.createComponent(factory, 0, null, content);
     this.setInputs();
-    
     this.handleFocus();
     this.handleOverlay();
   }

@@ -10,14 +10,6 @@ export function toNumber(num: number | any): number {
     return Number.isInteger(num) ? num : Number.parseInt(num);
 }
 
-/**
- * Utility function for clearing subscriptions in a component
- * Example :
- * .takeUntil(unsignedOnDestroyed(this))
- *  .subscribe(()=>{})
- * @param {OnDestroy} component
- * @returns {ReplaySubject<void>}
- */
 export function unsignedOnDestroyed(component: OnDestroy) {
   const oldNgOnDestroy = component.ngOnDestroy;
   const onDestroySubject$ = new ReplaySubject<void>(1);

@@ -2,7 +2,6 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
-    "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
     "moduleResolution": "node",
@@ -16,13 +15,10 @@
       "es2017",
       "dom"
     ],
-    "outDir": "./dist/",
+    "outDir": "./dist/ng-guide-walk-lib",
     "paths": {
       "ng-guide-walk-lib": [
         "dist/ng-guide-walk-lib"
-      ],
-      "ng-guide-walk-lib/*": [
-        "dist/ng-guide-walk-lib/*"
       ]
     }
   }

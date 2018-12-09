@@ -2,8 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { NgGuideWalkLibModule } from 'projects/ng-guide-walk-lib/src/public_api';
+
 import { TestCompComponent } from './test-comp/test-comp.component';
+import { NgGuideWalkLibModule } from 'projects/ng-guide-walk-lib/src/public_api';
 
 
 @NgModule({

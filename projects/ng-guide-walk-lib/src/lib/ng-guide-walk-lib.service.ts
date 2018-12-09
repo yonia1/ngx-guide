@@ -34,6 +34,7 @@ export class NgGuideWalkLibService {
     this.currentStep = undefined;
   }
   public startGuide() {
+   
     this.currentStep = 1;
     this.invokeStep(this.currentStep);
   }

@@ -1,0 +1,27 @@
+{
+  "name": "ng-guide-walk-lib",
+  "version": "0.0.3",
+  "homepage": "https://github.com/yonia1/ngx-guide",
+  "author": {
+    "name": "Yoni Amishav",
+    "email": "amishav@gmail.com"
+  },
+  "license": "MIT",
+  "peerDependencies": {
+    "@angular/common": "^7.1.1",
+    "@angular/core": "^7.1.1"
+  },
+  "dependencies": {
+    "tslib": "^1.9.0"
+  },
+  "main": "bundles/ng-guide-walk-lib.umd.js",
+  "module": "fesm5/ng-guide-walk-lib.js",
+  "es2015": "fesm2015/ng-guide-walk-lib.js",
+  "esm5": "esm5/ng-guide-walk-lib.js",
+  "esm2015": "esm2015/ng-guide-walk-lib.js",
+  "fesm5": "fesm5/ng-guide-walk-lib.js",
+  "fesm2015": "fesm2015/ng-guide-walk-lib.js",
+  "typings": "ng-guide-walk-lib.d.ts",
+  "metadata": "ng-guide-walk-lib.metadata.json",
+  "sideEffects": false
+}
