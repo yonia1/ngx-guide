@@ -2,6 +2,7 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
+
     "sourceMap": true,
     "declaration": false,
     "moduleResolution": "node",
@@ -15,7 +16,7 @@
       "es2017",
       "dom"
     ],
-    "outDir": "./dist/ng-guide-walk-lib",
+    "outDir": "./dist/",
     "paths": {
       "ng-guide-walk-lib": [
         "dist/ng-guide-walk-lib"
