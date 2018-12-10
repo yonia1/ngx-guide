@@ -7,6 +7,7 @@
   "peerDependencies": {
     "@angular/common": "^7.1.1",
     "@angular/core": "^7.1.1",
+    "@angular/platform-browser" :"7.1.1",
     "rxjs": "^6.3.3"
   },
   "dependencies": {

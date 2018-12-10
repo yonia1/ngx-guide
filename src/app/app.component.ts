@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NgGuideWalkLibService } from 'projects/ng-guide-walk-lib/src/public_api';
+import { NgGuideWalkLibService } from '../../dist/ng-guide-walk-lib';
 import { TestCompComponent } from './test-comp/test-comp.component';
 
 
