@@ -1,8 +1,8 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/common'), require('rxjs'), require('rxjs/operators'), require('@angular/core'), require('popper.js')) :
-    typeof define === 'function' && define.amd ? define('ng-guide-walk-lib', ['exports', '@angular/common', 'rxjs', 'rxjs/operators', '@angular/core', 'popper.js'], factory) :
-    (factory((global['ng-guide-walk-lib'] = {}),global.ng.common,global.rxjs,global.rxjs.operators,global.ng.core,global.Popper));
-}(this, (function (exports,common,rxjs,operators,i0,Popper) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/common'), require('rxjs'), require('rxjs/operators'), require('@angular/core'), require('popper.js'), require('@angular/platform-browser')) :
+    typeof define === 'function' && define.amd ? define('ng-guide-walk', ['exports', '@angular/common', 'rxjs', 'rxjs/operators', '@angular/core', 'popper.js', '@angular/platform-browser'], factory) :
+    (factory((global['ng-guide-walk'] = {}),global.ng.common,global.rxjs,global.rxjs.operators,global.ng.core,global.Popper,global.ng.platformBrowser));
+}(this, (function (exports,common,rxjs,operators,i0,Popper,platformBrowser) { 'use strict';
 
     Popper = Popper && Popper.hasOwnProperty('default') ? Popper['default'] : Popper;
 
@@ -543,10 +543,28 @@
     var NgGuideWalkLibModule = /** @class */ (function () {
         function NgGuideWalkLibModule() {
         }
+        /**
+         * @return {?}
+         */
+        NgGuideWalkLibModule.forRoot = /**
+         * @return {?}
+         */
+            function () {
+                return {
+                    ngModule: NgGuideWalkLibModule,
+                    providers: [
+                        {
+                            provide: NgGuideWalkLibService,
+                            useClass: NgGuideWalkLibService
+                        }
+                    ]
+                };
+            };
         NgGuideWalkLibModule.decorators = [
             { type: i0.NgModule, args: [{
                         imports: [
-                            common.CommonModule
+                            common.CommonModule,
+                            platformBrowser.BrowserModule,
                         ],
                         entryComponents: [GuideContentComponent],
                         declarations: [NgGuideWalkLibComponent,
@@ -582,4 +600,4 @@
 
 })));
 
-//# sourceMappingURL=ng-guide-walk-lib.umd.js.map
+//# sourceMappingURL=ng-guide-walk.umd.js.map

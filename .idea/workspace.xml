@@ -3,13 +3,42 @@
   <component name="ChangeListManager">
     <list default="true" id="2d8e2a8c-59c6-4ba2-8da5-ab6b78719860" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/angular.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/ng-guide-walk-lib-app/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/dist/ng-guide-walk-lib-app/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/ng-guide-walk-lib-app/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/ng-guide-walk-lib-app/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/ng-guide-walk-lib-app/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/ng-guide-walk-lib-app/main.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/ng-guide-walk-lib-app/polyfills.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/ng-guide-walk-lib-app/polyfills.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/ng-guide-walk-lib-app/runtime.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/ng-guide-walk-lib-app/runtime.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/ng-guide-walk-lib-app/styles.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/ng-guide-walk-lib-app/styles.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/ng-guide-walk-lib-app/vendor.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/ng-guide-walk-lib-app/vendor.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/ng-guide-walk-lib/bundles/ng-guide-walk-lib.umd.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/ng-guide-walk-lib/bundles/ng-guide-walk-lib.umd.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/ng-guide-walk-lib/bundles/ng-guide-walk-lib.umd.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/ng-guide-walk-lib/bundles/ng-guide-walk-lib.umd.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/ng-guide-walk-lib/bundles/ng-guide-walk-lib.umd.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/ng-guide-walk-lib/bundles/ng-guide-walk-lib.umd.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/ng-guide-walk-lib/bundles/ng-guide-walk-lib.umd.min.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/ng-guide-walk-lib/bundles/ng-guide-walk-lib.umd.min.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/ng-guide-walk-lib/esm2015/lib/ng-guide-step.directive.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/ng-guide-walk-lib/esm2015/lib/ng-guide-step.directive.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/ng-guide-walk-lib/esm2015/lib/ng-guide-walk-lib.module.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/ng-guide-walk-lib/esm2015/lib/ng-guide-walk-lib.module.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/ng-guide-walk-lib/esm2015/lib/ng-guide-walk-lib.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/ng-guide-walk-lib/esm2015/lib/ng-guide-walk-lib.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/ng-guide-walk-lib/esm5/lib/ng-guide-step.directive.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/ng-guide-walk-lib/esm5/lib/ng-guide-step.directive.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/ng-guide-walk-lib/esm5/lib/ng-guide-walk-lib.module.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/ng-guide-walk-lib/esm5/lib/ng-guide-walk-lib.module.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/ng-guide-walk-lib/esm5/lib/ng-guide-walk-lib.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/ng-guide-walk-lib/esm5/lib/ng-guide-walk-lib.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/ng-guide-walk-lib/fesm2015/ng-guide-walk-lib.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/ng-guide-walk-lib/fesm2015/ng-guide-walk-lib.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/ng-guide-walk-lib/fesm2015/ng-guide-walk-lib.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/ng-guide-walk-lib/fesm2015/ng-guide-walk-lib.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/ng-guide-walk-lib/fesm5/ng-guide-walk-lib.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/ng-guide-walk-lib/fesm5/ng-guide-walk-lib.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/ng-guide-walk-lib/fesm5/ng-guide-walk-lib.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/ng-guide-walk-lib/fesm5/ng-guide-walk-lib.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/ng-guide-walk-lib/lib/ng-guide-walk-lib.module.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/ng-guide-walk-lib/lib/ng-guide-walk-lib.module.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/ng-guide-walk-lib/ng-guide-walk-lib.metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/dist/ng-guide-walk-lib/ng-guide-walk-lib.metadata.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/ng-guide-walk-lib/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/dist/ng-guide-walk-lib/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projects/ng-guide-walk-lib/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ng-guide-walk-lib/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ng-guide-walk-lib/src/lib/ng-guide-walk-lib.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ng-guide-walk-lib/src/lib/ng-guide-walk-lib.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projects/ng-guide-walk-lib/src/lib/ng-guide-walk-lib.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ng-guide-walk-lib/src/lib/ng-guide-walk-lib.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/dist/" />
@@ -25,6 +54,7 @@
     <session id="1929517759">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.opened" value="1" />
         </counts>
@@ -57,17 +87,7 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/dist/ng-guide-walk-lib-app/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="7" column="11" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -143,12 +163,6 @@
               <item name="ng-guide-walk-lib" type="b2602c69:ProjectViewProjectNode" />
               <item name="ng-guide-walk-lib" type="462c0819:PsiDirectoryNode" />
               <item name="dist" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ng-guide-walk-lib" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ng-guide-walk-lib" type="462c0819:PsiDirectoryNode" />
-              <item name="dist" type="462c0819:PsiDirectoryNode" />
-              <item name="ng-guide-walk-lib-app" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />

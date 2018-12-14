@@ -2,7 +2,7 @@
 <div style="text-align:center">
   <div 
   class="tooltip"
-  [ngGuideStepStyle]="customStyle"
+ 
   ngGuideStep="1" ngGuideStepContent="this is step 1" ngGuideStepLocation='bottom'>
     <h1 >
       Welcome to {{ title }}!
@@ -17,6 +17,7 @@
 </div>
 <h2
 ngGuideStep="3"  ngGuideStepContent="this is step 3"
+[ngGuideStepStyle]="customStyle"
 >Here are some links to help you start: </h2>
 <ul>
   <li>

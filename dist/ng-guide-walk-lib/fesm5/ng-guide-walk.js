@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Subject, ReplaySubject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
-import { Injectable, NgModule, Component, Directive, ViewContainerRef, ElementRef, Input, TemplateRef, ComponentFactoryResolver, Renderer2, Injector, ViewEncapsulation, defineInjectable } from '@angular/core';
+import { Injectable, Component, Directive, ViewContainerRef, ElementRef, Input, TemplateRef, ComponentFactoryResolver, Renderer2, Injector, NgModule, ViewEncapsulation, defineInjectable } from '@angular/core';
 import Popper from 'popper.js';
+import { BrowserModule } from '@angular/platform-browser';
 
 /**
  * @fileoverview added by tsickle
@@ -543,10 +544,28 @@ var NgGuideStepDirective = /** @class */ (function () {
 var NgGuideWalkLibModule = /** @class */ (function () {
     function NgGuideWalkLibModule() {
     }
+    /**
+     * @return {?}
+     */
+    NgGuideWalkLibModule.forRoot = /**
+     * @return {?}
+     */
+    function () {
+        return {
+            ngModule: NgGuideWalkLibModule,
+            providers: [
+                {
+                    provide: NgGuideWalkLibService,
+                    useClass: NgGuideWalkLibService
+                }
+            ]
+        };
+    };
     NgGuideWalkLibModule.decorators = [
         { type: NgModule, args: [{
                     imports: [
-                        CommonModule
+                        CommonModule,
+                        BrowserModule,
                     ],
                     entryComponents: [GuideContentComponent],
                     declarations: [NgGuideWalkLibComponent,
@@ -574,4 +593,4 @@ var NgGuideWalkLibModule = /** @class */ (function () {
 
 export { NgGuideWalkLibService, NgGuideWalkLibComponent, NgGuideWalkLibModule, NgGuideStepDirective, GuideContentComponent };
 
-//# sourceMappingURL=ng-guide-walk-lib.js.map
+//# sourceMappingURL=ng-guide-walk.js.map

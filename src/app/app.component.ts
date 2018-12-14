@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { NgGuideWalkLibService } from '../../dist/ng-guide-walk-lib';
 import { TestCompComponent } from './test-comp/test-comp.component';
+import { NgGuideWalkLibService } from 'ng-guide-walk';
 
 
 @Component({

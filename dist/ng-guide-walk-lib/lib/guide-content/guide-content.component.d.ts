@@ -1,5 +1,6 @@
 import { OnInit, OnDestroy, ElementRef, Renderer2 } from '@angular/core';
 import { NgGuideWalkLibService } from '../ng-guide-walk-lib.service';
+import 'popper.js';
 import Popper from 'popper.js';
 export declare type WalkLocation = Popper.Placement;
 export declare class GuideContentComponent implements OnInit, OnDestroy {

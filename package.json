@@ -1,8 +1,12 @@
 {
   "name": "ng-guide-walk-lib-app",
-  "version": "0.1.0",
+  "version": "0.1.5",
   "homepage": "https://github.com/yonia1/ngx-guide",
-  "author": {"name": "yonia", "email": "amishav@gmail.com"},
+  "author": {
+    "name": "yonia",
+    "email": "amishav@gmail.com"
+  },
+  "main": "dist/ng-guide-walk-lib",
   "license": "MIT",
   "ngPackage": {
     "lib": {
@@ -17,7 +21,6 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
-
   "dependencies": {
     "@angular/animations": "^7.1.1",
     "@angular/common": "^7.1.1",
@@ -29,7 +32,8 @@
     "@angular/platform-browser-dynamic": "^7.1.1",
     "@angular/router": "^7.1.1",
     "core-js": "^2.5.4",
-    "popper.js": "^1.14.5",
+    "ng-guide-walk": "0.0.8",
+    "popper.js": "^1.14.6",
     "rxjs": "^6.3.3",
     "zone.js": "^0.8.26"
   },

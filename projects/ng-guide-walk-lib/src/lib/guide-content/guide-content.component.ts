@@ -2,6 +2,7 @@ import { Component, OnInit, Input, OnDestroy, ElementRef, Renderer2, ViewEncapsu
 import * as GuideUtils from '../utils';
 import { NgGuideWalkLibService } from '../ng-guide-walk-lib.service';
 import { TouchSequence } from 'selenium-webdriver';
+import 'popper.js';
 import Popper from 'popper.js';
 export type WalkLocation = Popper.Placement;
 

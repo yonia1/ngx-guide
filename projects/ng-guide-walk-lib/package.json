@@ -1,6 +1,6 @@
 {
-  "name": "ng-guide-walk-lib",
-  "version": "0.0.3",
+  "name": "ng-guide-walk",
+  "version": "0.1.1",
   "homepage": "https://github.com/yonia1/ngx-guide",
   "author": {"name": "Yoni Amishav", "email": "amishav@gmail.com"},
   "license": "MIT",
@@ -9,7 +9,13 @@
     "@angular/core": "^7.1.1",
     "@angular/platform-browser" :"7.1.1",
     "rxjs": "^6.3.3"
+  
   },
+  "locales": "locales",
   "dependencies": {
-  }
+    "tslib": "^1.9.3",
+    "popper.js": "1.14.6"
+  },
+  "sideEffects": false
 }
+

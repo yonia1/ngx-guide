@@ -4,7 +4,8 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 
 import { TestCompComponent } from './test-comp/test-comp.component';
-import { NgGuideWalkLibModule } from '../../dist/ng-guide-walk-lib';
+import { NgGuideWalkLibModule } from 'ng-guide-walk';
+
 
 
 @NgModule({
