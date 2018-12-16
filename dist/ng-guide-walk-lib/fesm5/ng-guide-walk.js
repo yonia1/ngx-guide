@@ -1,6 +1,6 @@
 import { Subject, ReplaySubject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
-import { Injectable, Component, NgModule, Input, ElementRef, Renderer2, ViewEncapsulation, Directive, ViewContainerRef, TemplateRef, ComponentFactoryResolver, Injector, defineInjectable } from '@angular/core';
+import { Injectable, Component, NgModule, Directive, ViewContainerRef, ElementRef, Input, TemplateRef, ComponentFactoryResolver, Renderer2, Injector, ViewEncapsulation, defineInjectable } from '@angular/core';
 import Popper from 'popper.js';
 import { CommonModule } from '@angular/common';
 
@@ -121,11 +121,12 @@ var NgGuideWalkLibService = /** @class */ (function () {
      */
     function () {
         this.closeCurrentStep();
-        this.currentStep++;
-        this.invokeStep(this.currentStep);
         if (this.isLast(this.currentStep)) {
             this.currentStep = undefined;
+            return; // and we are done for this tour
         }
+        this.currentStep++;
+        this.invokeStep(this.currentStep);
     };
     /**
      * @param {?} stepNum

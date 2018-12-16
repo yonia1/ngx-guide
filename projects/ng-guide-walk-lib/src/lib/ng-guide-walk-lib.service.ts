@@ -53,11 +53,13 @@ export class NgGuideWalkLibService {
 
   public nextGuide() {
     this.closeCurrentStep();
-    this.currentStep++;
-    this.invokeStep(this.currentStep);
     if (this.isLast(this.currentStep)) {
       this.currentStep = undefined;
+      return; // and we are done for this tour
     }
+    this.currentStep++;
+    this.invokeStep(this.currentStep);
+    
     
   }
   public getStepObservable(stepNum: number): Observable<WalkEvent> {
