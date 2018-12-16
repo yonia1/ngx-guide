@@ -7,8 +7,8 @@ export declare class NgGuideWalkLibService {
     private _config;
     config: {};
     constructor();
-    register(): void;
-    unregister(): void;
+    register(step: number): void;
+    unregister(step: number): void;
     isLast(step: any): boolean;
     stopGuide(): void;
     startGuide(): void;

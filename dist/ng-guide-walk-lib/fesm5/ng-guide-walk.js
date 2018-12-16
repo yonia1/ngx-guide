@@ -1,9 +1,8 @@
-import { CommonModule } from '@angular/common';
 import { Subject, ReplaySubject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
-import { Injectable, Component, Directive, ViewContainerRef, ElementRef, Input, TemplateRef, ComponentFactoryResolver, Renderer2, Injector, NgModule, ViewEncapsulation, defineInjectable } from '@angular/core';
+import { Injectable, Component, NgModule, Input, ElementRef, Renderer2, ViewEncapsulation, Directive, ViewContainerRef, TemplateRef, ComponentFactoryResolver, Injector, defineInjectable } from '@angular/core';
 import Popper from 'popper.js';
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 
 /**
  * @fileoverview added by tsickle
@@ -11,7 +10,7 @@ import { BrowserModule } from '@angular/platform-browser';
  */
 var NgGuideWalkLibService = /** @class */ (function () {
     function NgGuideWalkLibService() {
-        this.activeSteps = 0;
+        this.activeSteps = [];
         this.eventWalkSubject = new Subject();
         this.currentStep = null;
         this._config = {};
@@ -34,22 +33,26 @@ var NgGuideWalkLibService = /** @class */ (function () {
         configurable: true
     });
     /**
+     * @param {?} step
      * @return {?}
      */
     NgGuideWalkLibService.prototype.register = /**
+     * @param {?} step
      * @return {?}
      */
-    function () {
-        this.activeSteps++;
+    function (step) {
+        this.activeSteps.push(step);
     };
     /**
+     * @param {?} step
      * @return {?}
      */
     NgGuideWalkLibService.prototype.unregister = /**
+     * @param {?} step
      * @return {?}
      */
-    function () {
-        this.activeSteps--;
+    function (step) {
+        this.activeSteps = this.activeSteps.filter(function (stepNumber) { return stepNumber !== step; });
     };
     /**
      * @param {?} step
@@ -60,7 +63,7 @@ var NgGuideWalkLibService = /** @class */ (function () {
      * @return {?}
      */
     function (step) {
-        return (this.activeSteps) === step;
+        return this.currentStep ? (this.activeSteps.length) === step : true;
     };
     /**
      * @return {?}
@@ -79,6 +82,10 @@ var NgGuideWalkLibService = /** @class */ (function () {
      * @return {?}
      */
     function () {
+        this.activeSteps.sort();
+        if (this.currentStep) {
+            return;
+        }
         this.currentStep = 1;
         this.invokeStep(this.currentStep);
     };
@@ -92,7 +99,7 @@ var NgGuideWalkLibService = /** @class */ (function () {
      */
     function (stepNum) {
         this.closeCurrentStep();
-        this.currentStep = stepNum;
+        this.currentStep = this.activeSteps[stepNum - 1];
         this.eventWalkSubject.next({ step: stepNum, event: 'open' });
     };
     /**
@@ -116,6 +123,9 @@ var NgGuideWalkLibService = /** @class */ (function () {
         this.closeCurrentStep();
         this.currentStep++;
         this.invokeStep(this.currentStep);
+        if (this.isLast(this.currentStep)) {
+            this.currentStep = undefined;
+        }
     };
     /**
      * @param {?} stepNum
@@ -126,7 +136,9 @@ var NgGuideWalkLibService = /** @class */ (function () {
      * @return {?}
      */
     function (stepNum) {
-        return this.eventWalkSubject.asObservable().pipe(filter(function (item) { return item.step === stepNum; }));
+        return this.eventWalkSubject
+            .asObservable()
+            .pipe(filter(function (item) { return item.step === stepNum; }));
     };
     NgGuideWalkLibService.decorators = [
         { type: Injectable, args: [{
@@ -391,7 +403,7 @@ var NgGuideStepDirective = /** @class */ (function () {
      */
     function () {
         this.subscribeToGuideRequest();
-        this.walkLibService.register();
+        this.walkLibService.register((/** @type {?} */ (this.step)));
     };
     /**
      * @return {?}
@@ -401,7 +413,7 @@ var NgGuideStepDirective = /** @class */ (function () {
      */
     function () {
         this.closeComponent();
-        this.walkLibService.unregister();
+        this.walkLibService.unregister((/** @type {?} */ (this.step)));
     };
     /**
      * @return {?}
@@ -410,16 +422,25 @@ var NgGuideStepDirective = /** @class */ (function () {
      * @return {?}
      */
     function () {
+        var _this = this;
         if (!this.componentRef) {
             return;
         }
-        this.componentRef.destroy();
-        this.componentRef = null;
+        if (this.afterStepRun) {
+            this.afterStepRun(function () {
+                _this.componentRef.destroy();
+                _this.componentRef = null;
+            }, function () { return _this.walkLibService.stopGuide(); });
+        }
+        else {
+            this.componentRef.destroy();
+            this.componentRef = null;
+        }
     };
     /**
      * @return {?}
      */
-    NgGuideStepDirective.prototype.createComponent = /**
+    NgGuideStepDirective.prototype.generateComponent = /**
      * @return {?}
      */
     function () {
@@ -431,6 +452,21 @@ var NgGuideStepDirective = /** @class */ (function () {
         this.setInputs();
         this.handleFocus();
         this.handleOverlay();
+    };
+    /**
+     * @return {?}
+     */
+    NgGuideStepDirective.prototype.createComponent = /**
+     * @return {?}
+     */
+    function () {
+        var _this = this;
+        if (this.afterStepRun) {
+            this.afterStepRun(function () { return _this.generateComponent(); }, function () { return _this.walkLibService.stopGuide(); });
+        }
+        else {
+            this.generateComponent();
+        }
     };
     /**
      * @return {?}
@@ -565,7 +601,6 @@ var NgGuideWalkLibModule = /** @class */ (function () {
         { type: NgModule, args: [{
                     imports: [
                         CommonModule,
-                        BrowserModule,
                     ],
                     entryComponents: [GuideContentComponent],
                     declarations: [NgGuideWalkLibComponent,

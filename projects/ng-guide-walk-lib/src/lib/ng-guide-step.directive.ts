@@ -28,9 +28,12 @@ export class NgGuideStepDirective implements OnInit, OnDestroy {
   @Input('ngGuideStep') set step(stepNumber: number | string) {
     this._step = toNumber(stepNumber);
   }
-  get step() {
+  get step(): number | string {
     return this._step;
   }
+
+  beforeStepRun: (next: () => null | void | any, cancel: () => null | void | any) => null;
+  afterStepRun: (next: () => null | void | any, cancel: () => null | void | any) => null;
   @Input('ngGuideStepContent') ngGuideStepContent: string | TemplateRef<any> | Type<any>;
 
   @Input('ngGuideStepLocation') ngGuideStepLocation: WalkLocation = 'bottom';
@@ -48,24 +51,42 @@ export class NgGuideStepDirective implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscribeToGuideRequest();
-    this.walkLibService.register();
+    this.walkLibService.register(this.step as number);
   }
   ngOnDestroy(): void {
     this.closeComponent();
-    this.walkLibService.unregister();
+    this.walkLibService.unregister(this.step as number);
   }
   private closeComponent() {
     if (!this.componentRef) { return; }
-    this.componentRef.destroy();
-    this.componentRef = null;
+    if (this.afterStepRun) {
+      this.afterStepRun(() => {
+        this.componentRef.destroy();
+        this.componentRef = null;
+      }, () => this.walkLibService.stopGuide());
+    } else {
+      this.componentRef.destroy();
+      this.componentRef = null;
+    }
+
   }
-  private createComponent() {
+  private generateComponent() {
     const factory = this.resolver.resolveComponentFactory(GuideContentComponent);
     const content = this.generateNgContent();
     this.componentRef = this.viewContainerRef.createComponent(factory, 0, null, content);
     this.setInputs();
     this.handleFocus();
     this.handleOverlay();
+  }
+
+  private createComponent() {
+    if (this.afterStepRun) {
+      this.afterStepRun(() => this.generateComponent(),
+        () => this.walkLibService.stopGuide());
+    } else {
+      this.generateComponent();
+    }
+
   }
 
   generateNgContent() {

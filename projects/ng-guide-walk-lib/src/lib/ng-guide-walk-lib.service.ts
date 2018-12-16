@@ -7,7 +7,7 @@ import { WalkEvent } from './ng-guide.types';
   providedIn: 'root'
 })
 export class NgGuideWalkLibService {
-  private activeSteps = 0;
+  private activeSteps = [];
   private eventWalkSubject: Subject<WalkEvent> = new Subject();
   private currentStep: number | null = null;
   private _config = {};
@@ -20,27 +20,29 @@ export class NgGuideWalkLibService {
   }
 
   constructor() { }
-  register() {
-    this.activeSteps++;
+  register(step: number) {
+    this.activeSteps.push(step);
   }
-  unregister() {
-    this.activeSteps--;
+  unregister(step: number) {
+    this.activeSteps =  this.activeSteps.filter(stepNumber => stepNumber !== step);
   }
   isLast(step) {
-    return (this.activeSteps) === step;
+
+    return this.currentStep ? (this.activeSteps.length) === step : true;
   }
   stopGuide() {
     this.closeCurrentStep();
     this.currentStep = undefined;
   }
   public startGuide() {
-  
+    this.activeSteps.sort();
+    if (this.currentStep) { return; }
     this.currentStep = 1;
     this.invokeStep(this.currentStep);
   }
   public invokeStep(stepNum: number) {
     this.closeCurrentStep();
-    this.currentStep = stepNum;
+    this.currentStep = this.activeSteps[stepNum - 1];
     this.eventWalkSubject.next({ step: stepNum, event: 'open' });
   }
   private closeCurrentStep() {
@@ -53,8 +55,14 @@ export class NgGuideWalkLibService {
     this.closeCurrentStep();
     this.currentStep++;
     this.invokeStep(this.currentStep);
+    if (this.isLast(this.currentStep)) {
+      this.currentStep = undefined;
+    }
+    
   }
   public getStepObservable(stepNum: number): Observable<WalkEvent> {
-    return this.eventWalkSubject.asObservable().pipe(filter(item => item.step === stepNum));
+    return this.eventWalkSubject
+      .asObservable()
+      .pipe(filter(item => item.step === stepNum));
   }
 }

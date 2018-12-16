@@ -11,6 +11,8 @@ export declare class NgGuideStepDirective implements OnInit, OnDestroy {
     position: string;
     private _step;
     step: number | string;
+    beforeStepRun: (next: () => null | void | any, cancel: () => null | void | any) => null;
+    afterStepRun: (next: () => null | void | any, cancel: () => null | void | any) => null;
     ngGuideStepContent: string | TemplateRef<any> | Type<any>;
     ngGuideStepLocation: WalkLocation;
     ngGuideStepStyle: {
@@ -23,6 +25,7 @@ export declare class NgGuideStepDirective implements OnInit, OnDestroy {
     ngOnInit(): void;
     ngOnDestroy(): void;
     private closeComponent;
+    private generateComponent;
     private createComponent;
     generateNgContent(): any[][];
     private setInputs;

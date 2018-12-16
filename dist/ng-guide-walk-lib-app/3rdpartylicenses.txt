@@ -1,3 +1,6 @@
+ng-guide-walk
+MIT
+
 tslib
 Apache-2.0
 Apache License
@@ -266,13 +269,10 @@ Apache-2.0
 @angular/core
 MIT
 
-popper.js
-MIT
-
-ng-guide-walk
-MIT
-
 @angular/common
+MIT
+
+popper.js
 MIT
 
 @angular/platform-browser

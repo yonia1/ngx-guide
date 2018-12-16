@@ -1,9 +1,8 @@
-import { CommonModule } from '@angular/common';
 import { Subject, ReplaySubject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
-import { Injectable, NgModule, Directive, ViewContainerRef, ElementRef, Input, TemplateRef, ComponentFactoryResolver, Renderer2, Injector, Component, ViewEncapsulation, defineInjectable } from '@angular/core';
+import { Injectable, Component, NgModule, Directive, ViewContainerRef, ElementRef, Input, TemplateRef, ComponentFactoryResolver, Renderer2, Injector, ViewEncapsulation, defineInjectable } from '@angular/core';
 import Popper from 'popper.js';
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 
 /**
  * @fileoverview added by tsickle
@@ -11,7 +10,7 @@ import { BrowserModule } from '@angular/platform-browser';
  */
 class NgGuideWalkLibService {
     constructor() {
-        this.activeSteps = 0;
+        this.activeSteps = [];
         this.eventWalkSubject = new Subject();
         this.currentStep = null;
         this._config = {};
@@ -30,23 +29,25 @@ class NgGuideWalkLibService {
         this._config = config;
     }
     /**
+     * @param {?} step
      * @return {?}
      */
-    register() {
-        this.activeSteps++;
+    register(step) {
+        this.activeSteps.push(step);
     }
     /**
+     * @param {?} step
      * @return {?}
      */
-    unregister() {
-        this.activeSteps--;
+    unregister(step) {
+        this.activeSteps = this.activeSteps.filter(stepNumber => stepNumber !== step);
     }
     /**
      * @param {?} step
      * @return {?}
      */
     isLast(step) {
-        return (this.activeSteps) === step;
+        return this.currentStep ? (this.activeSteps.length) === step : true;
     }
     /**
      * @return {?}
@@ -59,6 +60,10 @@ class NgGuideWalkLibService {
      * @return {?}
      */
     startGuide() {
+        this.activeSteps.sort();
+        if (this.currentStep) {
+            return;
+        }
         this.currentStep = 1;
         this.invokeStep(this.currentStep);
     }
@@ -68,7 +73,7 @@ class NgGuideWalkLibService {
      */
     invokeStep(stepNum) {
         this.closeCurrentStep();
-        this.currentStep = stepNum;
+        this.currentStep = this.activeSteps[stepNum - 1];
         this.eventWalkSubject.next({ step: stepNum, event: 'open' });
     }
     /**
@@ -86,13 +91,18 @@ class NgGuideWalkLibService {
         this.closeCurrentStep();
         this.currentStep++;
         this.invokeStep(this.currentStep);
+        if (this.isLast(this.currentStep)) {
+            this.currentStep = undefined;
+        }
     }
     /**
      * @param {?} stepNum
      * @return {?}
      */
     getStepObservable(stepNum) {
-        return this.eventWalkSubject.asObservable().pipe(filter(item => item.step === stepNum));
+        return this.eventWalkSubject
+            .asObservable()
+            .pipe(filter(item => item.step === stepNum));
     }
 }
 NgGuideWalkLibService.decorators = [
@@ -337,14 +347,14 @@ class NgGuideStepDirective {
      */
     ngOnInit() {
         this.subscribeToGuideRequest();
-        this.walkLibService.register();
+        this.walkLibService.register((/** @type {?} */ (this.step)));
     }
     /**
      * @return {?}
      */
     ngOnDestroy() {
         this.closeComponent();
-        this.walkLibService.unregister();
+        this.walkLibService.unregister((/** @type {?} */ (this.step)));
     }
     /**
      * @return {?}
@@ -353,13 +363,21 @@ class NgGuideStepDirective {
         if (!this.componentRef) {
             return;
         }
-        this.componentRef.destroy();
-        this.componentRef = null;
+        if (this.afterStepRun) {
+            this.afterStepRun(() => {
+                this.componentRef.destroy();
+                this.componentRef = null;
+            }, () => this.walkLibService.stopGuide());
+        }
+        else {
+            this.componentRef.destroy();
+            this.componentRef = null;
+        }
     }
     /**
      * @return {?}
      */
-    createComponent() {
+    generateComponent() {
         /** @type {?} */
         const factory = this.resolver.resolveComponentFactory(GuideContentComponent);
         /** @type {?} */
@@ -368,6 +386,17 @@ class NgGuideStepDirective {
         this.setInputs();
         this.handleFocus();
         this.handleOverlay();
+    }
+    /**
+     * @return {?}
+     */
+    createComponent() {
+        if (this.afterStepRun) {
+            this.afterStepRun(() => this.generateComponent(), () => this.walkLibService.stopGuide());
+        }
+        else {
+            this.generateComponent();
+        }
     }
     /**
      * @return {?}
@@ -480,7 +509,6 @@ NgGuideWalkLibModule.decorators = [
     { type: NgModule, args: [{
                 imports: [
                     CommonModule,
-                    BrowserModule,
                 ],
                 entryComponents: [GuideContentComponent],
                 declarations: [NgGuideWalkLibComponent,

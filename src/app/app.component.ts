@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TestCompComponent } from './test-comp/test-comp.component';
-import { NgGuideWalkLibService } from 'ng-guide-walk';
+import { NgGuideWalkLibService } from 'projects/ng-guide-walk-lib/src/public_api';
 
 
 @Component({
@@ -19,7 +19,10 @@ export class AppComponent {
     setTimeout(() => this.guideSerivce.startGuide(), 2000);
   }
   getComp(){
-    return TestCompComponent
+    return TestCompComponent;
+  }
+  startTour() {
+    this.guideSerivce.startGuide();
   }
   
 }

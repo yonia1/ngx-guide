@@ -1,15 +1,16 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
-import { CommonModule } from '@angular/common';
+// import { CommonModule } from '@angular/common';
 import { NgGuideWalkLibComponent } from './ng-guide-walk-lib.component';
 import { NgGuideStepDirective } from './ng-guide-step.directive';
 import { GuideContentComponent } from './guide-content/guide-content.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgGuideWalkLibService } from './ng-guide-walk-lib.service';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   imports: [
     CommonModule,
-    BrowserModule,
+    // BrowserModule,
   ],
   entryComponents: [GuideContentComponent],
   declarations: [NgGuideWalkLibComponent,
