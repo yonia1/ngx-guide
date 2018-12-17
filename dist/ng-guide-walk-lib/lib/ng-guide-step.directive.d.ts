@@ -19,6 +19,7 @@ export declare class NgGuideStepDirective implements OnInit, OnDestroy {
         [key: string]: string;
     } | null;
     ngGuideStepDisplayArrow: boolean;
+    ngGuideStepOverlay: boolean | string;
     ngGuideStepFocusElement: boolean;
     private componentRef;
     constructor(elementRef: ElementRef, viewContainerRef: ViewContainerRef, renderer: Renderer2, injector: Injector, resolver: ComponentFactoryResolver, walkLibService: NgGuideWalkLibService);

@@ -20,3 +20,7 @@ export function unsignedOnDestroyed(component: OnDestroy) {
   };
   return onDestroySubject$;
 }
+
+export function toBoolean(value: boolean | string) {
+  return String(value) == 'true';
+}

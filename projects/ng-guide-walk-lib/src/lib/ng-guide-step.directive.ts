@@ -9,7 +9,7 @@ import {
   ComponentFactoryResolver, Renderer2, Injector, OnDestroy, OnInit
 } from '@angular/core';
 import { NgGuideWalkLibService } from './ng-guide-walk-lib.service';
-import { toNumber, unsignedOnDestroyed } from './utils';
+import { toNumber, unsignedOnDestroyed, toBoolean } from './utils';
 import { WalkEvent } from './ng-guide.types';
 import { takeUntil } from 'rxjs/operators';
 import { GuideContentComponent, WalkLocation } from './guide-content/guide-content.component';
@@ -39,6 +39,8 @@ export class NgGuideStepDirective implements OnInit, OnDestroy {
   @Input('ngGuideStepLocation') ngGuideStepLocation: WalkLocation = 'bottom';
   @Input('ngGuideStepStyle') ngGuideStepStyle: { [key: string]: string } | null = null;
   @Input('ngGuideStepDisplayArrow') ngGuideStepDisplayArrow: boolean = true;
+  @Input('ngGuideStepOverlay') ngGuideStepOverlay: boolean | string = true;
+
   @Input('ngGuideStepFocusElement') ngGuideStepFocusElement: boolean = true;
   private componentRef: ComponentRef<GuideContentComponent>;
   constructor(
@@ -123,14 +125,15 @@ export class NgGuideStepDirective implements OnInit, OnDestroy {
   }
 
   private handleOverlay() {
-    this.renderer.addClass(this.elementRef.nativeElement, 'overlay');
-    // this.elementRef.nativeElement.classList.add('overlay');
-    this.componentRef.onDestroy(() => {
-      this.renderer.removeClass(this.elementRef.nativeElement, 'overlay');
-    });
+    if (toBoolean(this.ngGuideStepOverlay)){
+      this.renderer.addClass(this.elementRef.nativeElement, 'overlay');
+      this.componentRef.onDestroy(() => {
+        this.renderer.removeClass(this.elementRef.nativeElement, 'overlay');
+      });
+    }
   }
   private handleFocus() {
-    if (this.ngGuideStepFocusElement) {
+    if (toBoolean(this.ngGuideStepFocusElement)){
       this.elementRef.nativeElement.focus();
     }
   }

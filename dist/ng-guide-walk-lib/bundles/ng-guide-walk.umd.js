@@ -207,6 +207,13 @@
         };
         return onDestroySubject$;
     }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    function toBoolean(value) {
+        return String(value) == 'true';
+    }
 
     /**
      * @fileoverview added by tsickle
@@ -334,7 +341,7 @@
                         encapsulation: i0.ViewEncapsulation.None,
                         selector: 'ng-guide-content',
                         template: "<div class=\"ngx-guide\"\n[ngStyle]=\"customCss\"\n[class.visible]=\"show\">\n \n  <ng-content></ng-content>\n  <hr>\n  \n  <button type=\"button\" class=\"ngx-guide__close\" (click)=\"next()\">\n    next\n  </button>\n  <button type=\"button\" class=\"ngx-guide__close\" (click)=\"done()\">\n    done\n  </button>\n  \n  <div *ngIf=\"displayArrow\" [ngStyle]=\"customCss\" class=\"ngx-guide__arrow\" x-arrow></div>\n</div>",
-                        styles: [".ngx-guide{position:absolute;background:#ffc107;color:#fff;opacity:.85;width:150px;border-radius:3px;box-shadow:0 0 2px rgba(0,0,0,.5);padding:10px;text-align:center;z-index:9999}.ngx-guide:not(.visible){display:none}.ngx-guide .ngx-guide__arrow{width:0;height:0;border-style:solid;border-color:#ffc107;position:absolute;margin:5px}.ngx-guide[x-placement^=top]{margin-bottom:5px}.ngx-guide[x-placement^=top] .ngx-guide__arrow{border-width:5px 5px 0;border-left-color:transparent;border-right-color:transparent;border-bottom-color:transparent;bottom:-5px;left:calc(50% - 5px);margin-top:0;margin-bottom:0}.ngx-guide[x-placement^=bottom]{margin-top:5px}.ngx-guide[x-placement^=bottom] .ngx-guide__arrow{border-width:0 5px 5px;border-left-color:transparent;border-right-color:transparent;border-top-color:transparent;top:-5px;left:calc(50% - 5px);margin-top:0;margin-bottom:0}.ngx-guide[x-placement^=right]{margin-left:5px}.ngx-guide[x-placement^=right] .ngx-guide__arrow{border-width:5px 5px 5px 0;border-left-color:transparent;border-top-color:transparent;border-bottom-color:transparent;left:-5px;top:calc(50% - 5px);margin-left:0;margin-right:0}.ngx-guide[x-placement^=left]{margin-right:5px}.ngx-guide[x-placement^=left] .ngx-guide__arrow{border-width:5px 0 5px 5px;border-top-color:transparent;border-right-color:transparent;border-bottom-color:transparent;right:-5px;top:calc(50% - 5px);margin-left:0;margin-right:0}.overlay{padding:10px;z-index:0;box-shadow:0 0 0 100vmax rgba(0,0,0,.5)}"]
+                        styles: [".ngx-guide{position:absolute;background:#ffc107;color:#fff;opacity:.85;width:150px;border-radius:3px;box-shadow:0 0 2px rgba(0,0,0,.5);padding:10px;text-align:center;z-index:9999}.ngx-guide:not(.visible){display:none}.ngx-guide .ngx-guide__arrow{width:0;height:0;border-style:solid;border-color:#ffc107;position:absolute;margin:5px}.ngx-guide[x-placement^=top]{margin-bottom:5px}.ngx-guide[x-placement^=top] .ngx-guide__arrow{border-width:5px 5px 0;border-left-color:transparent;border-right-color:transparent;border-bottom-color:transparent;bottom:-5px;left:calc(50% - 5px);margin-top:0;margin-bottom:0}.ngx-guide[x-placement^=bottom]{margin-top:5px}.ngx-guide[x-placement^=bottom] .ngx-guide__arrow{border-width:0 5px 5px;border-left-color:transparent;border-right-color:transparent;border-top-color:transparent;top:-5px;left:calc(50% - 5px);margin-top:0;margin-bottom:0}.ngx-guide[x-placement^=right]{margin-left:5px}.ngx-guide[x-placement^=right] .ngx-guide__arrow{border-width:5px 5px 5px 0;border-left-color:transparent;border-top-color:transparent;border-bottom-color:transparent;left:-5px;top:calc(50% - 5px);margin-left:0;margin-right:0}.ngx-guide[x-placement^=left]{margin-right:5px}.ngx-guide[x-placement^=left] .ngx-guide__arrow{border-width:5px 0 5px 5px;border-top-color:transparent;border-right-color:transparent;border-bottom-color:transparent;right:-5px;top:calc(50% - 5px);margin-left:0;margin-right:0}.overlay{padding:10px;z-index:0;box-shadow:0 0 0 100vh rgba(0,0,0,.5)}"]
                     }] }
         ];
         /** @nocollapse */
@@ -377,6 +384,7 @@
             this.ngGuideStepLocation = 'bottom';
             this.ngGuideStepStyle = null;
             this.ngGuideStepDisplayArrow = true;
+            this.ngGuideStepOverlay = true;
             this.ngGuideStepFocusElement = true;
         }
         Object.defineProperty(NgGuideStepDirective.prototype, "step", {
@@ -530,11 +538,12 @@
          */
             function () {
                 var _this = this;
-                this.renderer.addClass(this.elementRef.nativeElement, 'overlay');
-                // this.elementRef.nativeElement.classList.add('overlay');
-                this.componentRef.onDestroy(function () {
-                    _this.renderer.removeClass(_this.elementRef.nativeElement, 'overlay');
-                });
+                if (toBoolean(this.ngGuideStepOverlay)) {
+                    this.renderer.addClass(this.elementRef.nativeElement, 'overlay');
+                    this.componentRef.onDestroy(function () {
+                        _this.renderer.removeClass(_this.elementRef.nativeElement, 'overlay');
+                    });
+                }
             };
         /**
          * @return {?}
@@ -543,7 +552,7 @@
          * @return {?}
          */
             function () {
-                if (this.ngGuideStepFocusElement) {
+                if (toBoolean(this.ngGuideStepFocusElement)) {
                     this.elementRef.nativeElement.focus();
                 }
             };
@@ -569,6 +578,7 @@
             ngGuideStepLocation: [{ type: i0.Input, args: ['ngGuideStepLocation',] }],
             ngGuideStepStyle: [{ type: i0.Input, args: ['ngGuideStepStyle',] }],
             ngGuideStepDisplayArrow: [{ type: i0.Input, args: ['ngGuideStepDisplayArrow',] }],
+            ngGuideStepOverlay: [{ type: i0.Input, args: ['ngGuideStepOverlay',] }],
             ngGuideStepFocusElement: [{ type: i0.Input, args: ['ngGuideStepFocusElement',] }]
         };
         return NgGuideStepDirective;

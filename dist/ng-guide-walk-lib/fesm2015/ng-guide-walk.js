@@ -1,6 +1,6 @@
 import { Subject, ReplaySubject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
-import { Injectable, Component, NgModule, Input, ElementRef, Renderer2, ViewEncapsulation, Directive, ViewContainerRef, TemplateRef, ComponentFactoryResolver, Injector, defineInjectable } from '@angular/core';
+import { Injectable, Component, NgModule, Directive, ViewContainerRef, ElementRef, Input, TemplateRef, ComponentFactoryResolver, Renderer2, Injector, ViewEncapsulation, defineInjectable } from '@angular/core';
 import Popper from 'popper.js';
 import { CommonModule } from '@angular/common';
 
@@ -170,6 +170,13 @@ function unsignedOnDestroyed(component) {
     };
     return onDestroySubject$;
 }
+/**
+ * @param {?} value
+ * @return {?}
+ */
+function toBoolean(value) {
+    return String(value) == 'true';
+}
 
 /**
  * @fileoverview added by tsickle
@@ -281,7 +288,7 @@ GuideContentComponent.decorators = [
                 encapsulation: ViewEncapsulation.None,
                 selector: 'ng-guide-content',
                 template: "<div class=\"ngx-guide\"\n[ngStyle]=\"customCss\"\n[class.visible]=\"show\">\n \n  <ng-content></ng-content>\n  <hr>\n  \n  <button type=\"button\" class=\"ngx-guide__close\" (click)=\"next()\">\n    next\n  </button>\n  <button type=\"button\" class=\"ngx-guide__close\" (click)=\"done()\">\n    done\n  </button>\n  \n  <div *ngIf=\"displayArrow\" [ngStyle]=\"customCss\" class=\"ngx-guide__arrow\" x-arrow></div>\n</div>",
-                styles: [".ngx-guide{position:absolute;background:#ffc107;color:#fff;opacity:.85;width:150px;border-radius:3px;box-shadow:0 0 2px rgba(0,0,0,.5);padding:10px;text-align:center;z-index:9999}.ngx-guide:not(.visible){display:none}.ngx-guide .ngx-guide__arrow{width:0;height:0;border-style:solid;border-color:#ffc107;position:absolute;margin:5px}.ngx-guide[x-placement^=top]{margin-bottom:5px}.ngx-guide[x-placement^=top] .ngx-guide__arrow{border-width:5px 5px 0;border-left-color:transparent;border-right-color:transparent;border-bottom-color:transparent;bottom:-5px;left:calc(50% - 5px);margin-top:0;margin-bottom:0}.ngx-guide[x-placement^=bottom]{margin-top:5px}.ngx-guide[x-placement^=bottom] .ngx-guide__arrow{border-width:0 5px 5px;border-left-color:transparent;border-right-color:transparent;border-top-color:transparent;top:-5px;left:calc(50% - 5px);margin-top:0;margin-bottom:0}.ngx-guide[x-placement^=right]{margin-left:5px}.ngx-guide[x-placement^=right] .ngx-guide__arrow{border-width:5px 5px 5px 0;border-left-color:transparent;border-top-color:transparent;border-bottom-color:transparent;left:-5px;top:calc(50% - 5px);margin-left:0;margin-right:0}.ngx-guide[x-placement^=left]{margin-right:5px}.ngx-guide[x-placement^=left] .ngx-guide__arrow{border-width:5px 0 5px 5px;border-top-color:transparent;border-right-color:transparent;border-bottom-color:transparent;right:-5px;top:calc(50% - 5px);margin-left:0;margin-right:0}.overlay{padding:10px;z-index:0;box-shadow:0 0 0 100vmax rgba(0,0,0,.5)}"]
+                styles: [".ngx-guide{position:absolute;background:#ffc107;color:#fff;opacity:.85;width:150px;border-radius:3px;box-shadow:0 0 2px rgba(0,0,0,.5);padding:10px;text-align:center;z-index:9999}.ngx-guide:not(.visible){display:none}.ngx-guide .ngx-guide__arrow{width:0;height:0;border-style:solid;border-color:#ffc107;position:absolute;margin:5px}.ngx-guide[x-placement^=top]{margin-bottom:5px}.ngx-guide[x-placement^=top] .ngx-guide__arrow{border-width:5px 5px 0;border-left-color:transparent;border-right-color:transparent;border-bottom-color:transparent;bottom:-5px;left:calc(50% - 5px);margin-top:0;margin-bottom:0}.ngx-guide[x-placement^=bottom]{margin-top:5px}.ngx-guide[x-placement^=bottom] .ngx-guide__arrow{border-width:0 5px 5px;border-left-color:transparent;border-right-color:transparent;border-top-color:transparent;top:-5px;left:calc(50% - 5px);margin-top:0;margin-bottom:0}.ngx-guide[x-placement^=right]{margin-left:5px}.ngx-guide[x-placement^=right] .ngx-guide__arrow{border-width:5px 5px 5px 0;border-left-color:transparent;border-top-color:transparent;border-bottom-color:transparent;left:-5px;top:calc(50% - 5px);margin-left:0;margin-right:0}.ngx-guide[x-placement^=left]{margin-right:5px}.ngx-guide[x-placement^=left] .ngx-guide__arrow{border-width:5px 0 5px 5px;border-top-color:transparent;border-right-color:transparent;border-bottom-color:transparent;right:-5px;top:calc(50% - 5px);margin-left:0;margin-right:0}.overlay{padding:10px;z-index:0;box-shadow:0 0 0 100vh rgba(0,0,0,.5)}"]
             }] }
 ];
 /** @nocollapse */
@@ -328,6 +335,7 @@ class NgGuideStepDirective {
         this.ngGuideStepLocation = 'bottom';
         this.ngGuideStepStyle = null;
         this.ngGuideStepDisplayArrow = true;
+        this.ngGuideStepOverlay = true;
         this.ngGuideStepFocusElement = true;
     }
     /**
@@ -448,17 +456,18 @@ class NgGuideStepDirective {
      * @return {?}
      */
     handleOverlay() {
-        this.renderer.addClass(this.elementRef.nativeElement, 'overlay');
-        // this.elementRef.nativeElement.classList.add('overlay');
-        this.componentRef.onDestroy(() => {
-            this.renderer.removeClass(this.elementRef.nativeElement, 'overlay');
-        });
+        if (toBoolean(this.ngGuideStepOverlay)) {
+            this.renderer.addClass(this.elementRef.nativeElement, 'overlay');
+            this.componentRef.onDestroy(() => {
+                this.renderer.removeClass(this.elementRef.nativeElement, 'overlay');
+            });
+        }
     }
     /**
      * @return {?}
      */
     handleFocus() {
-        if (this.ngGuideStepFocusElement) {
+        if (toBoolean(this.ngGuideStepFocusElement)) {
             this.elementRef.nativeElement.focus();
         }
     }
@@ -483,6 +492,7 @@ NgGuideStepDirective.propDecorators = {
     ngGuideStepLocation: [{ type: Input, args: ['ngGuideStepLocation',] }],
     ngGuideStepStyle: [{ type: Input, args: ['ngGuideStepStyle',] }],
     ngGuideStepDisplayArrow: [{ type: Input, args: ['ngGuideStepDisplayArrow',] }],
+    ngGuideStepOverlay: [{ type: Input, args: ['ngGuideStepOverlay',] }],
     ngGuideStepFocusElement: [{ type: Input, args: ['ngGuideStepFocusElement',] }]
 };
 
