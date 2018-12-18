@@ -1,6 +1,6 @@
 import { Subject, ReplaySubject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
-import { Injectable, Component, NgModule, Directive, ViewContainerRef, ElementRef, Input, TemplateRef, ComponentFactoryResolver, Renderer2, Injector, ViewEncapsulation, defineInjectable } from '@angular/core';
+import { Injectable, Component, NgModule, Directive, ViewContainerRef, ElementRef, Input, TemplateRef, EventEmitter, ComponentFactoryResolver, Renderer2, Injector, Output, ViewEncapsulation, defineInjectable } from '@angular/core';
 import Popper from 'popper.js';
 import { CommonModule } from '@angular/common';
 
@@ -337,6 +337,7 @@ class NgGuideStepDirective {
         this.ngGuideStepDisplayArrow = true;
         this.ngGuideStepOverlay = true;
         this.ngGuideStepFocusElement = true;
+        this.ngGuideStepStepStatus = new EventEmitter();
     }
     /**
      * @param {?} stepNumber
@@ -372,21 +373,16 @@ class NgGuideStepDirective {
         if (!this.componentRef) {
             return;
         }
-        if (this.afterStepRun) {
-            this.afterStepRun(() => {
-                this.componentRef.destroy();
-                this.componentRef = null;
-            }, () => this.walkLibService.stopGuide());
-        }
-        else {
-            this.componentRef.destroy();
-            this.componentRef = null;
-        }
+        this.ngGuideStepStepStatus.emit('BeforeClose');
+        this.componentRef.destroy();
+        this.componentRef = null;
+        this.ngGuideStepStepStatus.emit('AfterClose');
     }
     /**
      * @return {?}
      */
     generateComponent() {
+        this.ngGuideStepStepStatus.emit('BeforeOpen');
         /** @type {?} */
         const factory = this.resolver.resolveComponentFactory(GuideContentComponent);
         /** @type {?} */
@@ -395,17 +391,13 @@ class NgGuideStepDirective {
         this.setInputs();
         this.handleFocus();
         this.handleOverlay();
+        this.ngGuideStepStepStatus.emit('Open');
     }
     /**
      * @return {?}
      */
     createComponent() {
-        if (this.afterStepRun) {
-            this.afterStepRun(() => this.generateComponent(), () => this.walkLibService.stopGuide());
-        }
-        else {
-            this.generateComponent();
-        }
+        this.generateComponent();
     }
     /**
      * @return {?}
@@ -493,7 +485,8 @@ NgGuideStepDirective.propDecorators = {
     ngGuideStepStyle: [{ type: Input, args: ['ngGuideStepStyle',] }],
     ngGuideStepDisplayArrow: [{ type: Input, args: ['ngGuideStepDisplayArrow',] }],
     ngGuideStepOverlay: [{ type: Input, args: ['ngGuideStepOverlay',] }],
-    ngGuideStepFocusElement: [{ type: Input, args: ['ngGuideStepFocusElement',] }]
+    ngGuideStepFocusElement: [{ type: Input, args: ['ngGuideStepFocusElement',] }],
+    ngGuideStepStepStatus: [{ type: Output, args: ['ngGuideStepStepStatus',] }]
 };
 
 /**

@@ -386,6 +386,7 @@
             this.ngGuideStepDisplayArrow = true;
             this.ngGuideStepOverlay = true;
             this.ngGuideStepFocusElement = true;
+            this.ngGuideStepStepStatus = new i0.EventEmitter();
         }
         Object.defineProperty(NgGuideStepDirective.prototype, "step", {
             get: /**
@@ -429,20 +430,13 @@
          * @return {?}
          */
             function () {
-                var _this = this;
                 if (!this.componentRef) {
                     return;
                 }
-                if (this.afterStepRun) {
-                    this.afterStepRun(function () {
-                        _this.componentRef.destroy();
-                        _this.componentRef = null;
-                    }, function () { return _this.walkLibService.stopGuide(); });
-                }
-                else {
-                    this.componentRef.destroy();
-                    this.componentRef = null;
-                }
+                this.ngGuideStepStepStatus.emit('BeforeClose');
+                this.componentRef.destroy();
+                this.componentRef = null;
+                this.ngGuideStepStepStatus.emit('AfterClose');
             };
         /**
          * @return {?}
@@ -451,6 +445,7 @@
          * @return {?}
          */
             function () {
+                this.ngGuideStepStepStatus.emit('BeforeOpen');
                 /** @type {?} */
                 var factory = this.resolver.resolveComponentFactory(GuideContentComponent);
                 /** @type {?} */
@@ -459,6 +454,7 @@
                 this.setInputs();
                 this.handleFocus();
                 this.handleOverlay();
+                this.ngGuideStepStepStatus.emit('Open');
             };
         /**
          * @return {?}
@@ -467,13 +463,7 @@
          * @return {?}
          */
             function () {
-                var _this = this;
-                if (this.afterStepRun) {
-                    this.afterStepRun(function () { return _this.generateComponent(); }, function () { return _this.walkLibService.stopGuide(); });
-                }
-                else {
-                    this.generateComponent();
-                }
+                this.generateComponent();
             };
         /**
          * @return {?}
@@ -579,7 +569,8 @@
             ngGuideStepStyle: [{ type: i0.Input, args: ['ngGuideStepStyle',] }],
             ngGuideStepDisplayArrow: [{ type: i0.Input, args: ['ngGuideStepDisplayArrow',] }],
             ngGuideStepOverlay: [{ type: i0.Input, args: ['ngGuideStepOverlay',] }],
-            ngGuideStepFocusElement: [{ type: i0.Input, args: ['ngGuideStepFocusElement',] }]
+            ngGuideStepFocusElement: [{ type: i0.Input, args: ['ngGuideStepFocusElement',] }],
+            ngGuideStepStepStatus: [{ type: i0.Output, args: ['ngGuideStepStepStatus',] }]
         };
         return NgGuideStepDirective;
     }());
