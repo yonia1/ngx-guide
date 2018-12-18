@@ -12,17 +12,20 @@ export class AppComponent {
   title = 'app';
   customStyle = {
     'background-color': 'red',
-    'color' : 'green',
+    'color': 'green',
     'border-radius': '50%'
   };
   constructor(private guideSerivce: NgGuideWalkLibService) {
     setTimeout(() => this.guideSerivce.startGuide(), 2000);
   }
-  getComp(){
+  getComp() {
     return TestCompComponent;
   }
   startTour() {
     this.guideSerivce.startGuide();
   }
-  
+  handleStep(event) {
+    console.log(event);
+  }
+
 }

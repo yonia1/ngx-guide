@@ -5,8 +5,9 @@ import {
   Input,
   TemplateRef,
   Type,
+  EventEmitter,
   ComponentRef,
-  ComponentFactoryResolver, Renderer2, Injector, OnDestroy, OnInit
+  ComponentFactoryResolver, Renderer2, Injector, OnDestroy, OnInit, Output
 } from '@angular/core';
 import { NgGuideWalkLibService } from './ng-guide-walk-lib.service';
 import { toNumber, unsignedOnDestroyed, toBoolean } from './utils';
@@ -14,7 +15,7 @@ import { WalkEvent } from './ng-guide.types';
 import { takeUntil } from 'rxjs/operators';
 import { GuideContentComponent, WalkLocation } from './guide-content/guide-content.component';
 
-
+export type StepStatus = 'BeforeOpen' | 'Open' | 'BeforeClose' | 'AfterClose';
 
 @Directive({
   selector: '[ngGuideStep]',
@@ -22,7 +23,6 @@ import { GuideContentComponent, WalkLocation } from './guide-content/guide-conte
 export class NgGuideStepDirective implements OnInit, OnDestroy {
 
   position = 'below';
-
   private _step: number = 1;
 
   @Input('ngGuideStep') set step(stepNumber: number | string) {
@@ -31,17 +31,15 @@ export class NgGuideStepDirective implements OnInit, OnDestroy {
   get step(): number | string {
     return this._step;
   }
-
-  beforeStepRun: (next: () => null | void | any, cancel: () => null | void | any) => null;
-  afterStepRun: (next: () => null | void | any, cancel: () => null | void | any) => null;
   @Input('ngGuideStepContent') ngGuideStepContent: string | TemplateRef<any> | Type<any>;
-
   @Input('ngGuideStepLocation') ngGuideStepLocation: WalkLocation = 'bottom';
   @Input('ngGuideStepStyle') ngGuideStepStyle: { [key: string]: string } | null = null;
   @Input('ngGuideStepDisplayArrow') ngGuideStepDisplayArrow: boolean = true;
   @Input('ngGuideStepOverlay') ngGuideStepOverlay: boolean | string = true;
-
   @Input('ngGuideStepFocusElement') ngGuideStepFocusElement: boolean = true;
+
+  @Output('ngGuideStepStepStatus') ngGuideStepStepStatus: EventEmitter<StepStatus> = new EventEmitter();
+
   private componentRef: ComponentRef<GuideContentComponent>;
   constructor(
     private elementRef: ElementRef,
@@ -61,34 +59,25 @@ export class NgGuideStepDirective implements OnInit, OnDestroy {
   }
   private closeComponent() {
     if (!this.componentRef) { return; }
-    if (this.afterStepRun) {
-      this.afterStepRun(() => {
-        this.componentRef.destroy();
-        this.componentRef = null;
-      }, () => this.walkLibService.stopGuide());
-    } else {
-      this.componentRef.destroy();
-      this.componentRef = null;
-    }
+    this.ngGuideStepStepStatus.emit('BeforeClose');
+    this.componentRef.destroy();
+    this.componentRef = null;
+    this.ngGuideStepStepStatus.emit('AfterClose');
 
   }
   private generateComponent() {
+    this.ngGuideStepStepStatus.emit('BeforeOpen');
     const factory = this.resolver.resolveComponentFactory(GuideContentComponent);
     const content = this.generateNgContent();
     this.componentRef = this.viewContainerRef.createComponent(factory, 0, null, content);
     this.setInputs();
     this.handleFocus();
     this.handleOverlay();
+    this.ngGuideStepStepStatus.emit('Open');
   }
 
   private createComponent() {
-    if (this.afterStepRun) {
-      this.afterStepRun(() => this.generateComponent(),
-        () => this.walkLibService.stopGuide());
-    } else {
-      this.generateComponent();
-    }
-
+    this.generateComponent();
   }
 
   generateNgContent() {
@@ -125,7 +114,7 @@ export class NgGuideStepDirective implements OnInit, OnDestroy {
   }
 
   private handleOverlay() {
-    if (toBoolean(this.ngGuideStepOverlay)){
+    if (toBoolean(this.ngGuideStepOverlay)) {
       this.renderer.addClass(this.elementRef.nativeElement, 'overlay');
       this.componentRef.onDestroy(() => {
         this.renderer.removeClass(this.elementRef.nativeElement, 'overlay');
@@ -133,7 +122,7 @@ export class NgGuideStepDirective implements OnInit, OnDestroy {
     }
   }
   private handleFocus() {
-    if (toBoolean(this.ngGuideStepFocusElement)){
+    if (toBoolean(this.ngGuideStepFocusElement)) {
       this.elementRef.nativeElement.focus();
     }
   }
