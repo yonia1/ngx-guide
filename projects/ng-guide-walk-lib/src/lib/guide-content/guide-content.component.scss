@@ -1,5 +1,6 @@
 .ngx-guide {
   position: absolute;
+  z-index: 9999;
   background:  #FFC107;
   color: white;
   opacity: 0.85;
@@ -42,7 +43,7 @@
 }
 
 .ngx-guide[x-placement^="bottom"] {
-  margin-top: 5px;
+  margin-top: 10px;
 }
 
 .ngx-guide[x-placement^="bottom"] .ngx-guide__arrow {
@@ -57,7 +58,7 @@
 }
 
 .ngx-guide[x-placement^="right"] {
-  margin-left: 5px;
+  margin-left: 10px;
 }
 
 .ngx-guide[x-placement^="right"] .ngx-guide__arrow {
@@ -72,7 +73,7 @@
 }
 
 .ngx-guide[x-placement^="left"] {
-  margin-right: 5px;
+  margin-right: 10px;
 }
 
 .ngx-guide[x-placement^="left"] .ngx-guide__arrow {
@@ -87,9 +88,41 @@
 }
 
 .overlay {
-  padding: 10px;
-  z-index: 0px;
-  box-shadow: 0 0 0 100vh rgba(0,0,0, .5);
- //  border-radius:20%;
-  // transition: 0.35s box-shadow
+  top: 0px; bottom: 0px; left: 0px; right: 0px; position: fixed; opacity: 0.8;
+  position: absolute;
+  box-sizing: content-box;
+  z-index: 99;
+  background-color: #000;
+  opacity: 0.55;
+  background: -moz-radial-gradient(center,ellipse farthest-corner,rgba(0,0,0,0.4) 0,rgba(0,0,0,0.9) 100%);
+  background: -webkit-gradient(radial,center center,0px,center center,100%,color-stop(0%,rgba(0,0,0,0.4)),color-stop(100%,rgba(0,0,0,0.9)));
+  background: -webkit-radial-gradient(center,ellipse farthest-corner,rgba(0,0,0,0.4) 0,rgba(0,0,0,0.9) 100%);
+  background: -o-radial-gradient(center,ellipse farthest-corner,rgba(0,0,0,0.4) 0,rgba(0,0,0,0.9) 100%);
+  background: -ms-radial-gradient(center,ellipse farthest-corner,rgba(0,0,0,0.4) 0,rgba(0,0,0,0.9) 100%);
+  background: radial-gradient(center,ellipse farthest-corner,rgba(0,0,0,0.4) 0,rgba(0,0,0,0.9) 100%);
+  filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#66000000',endColorstr='#e6000000',GradientType=1)";
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  filter: alpha(opacity=50);
+  -webkit-transition: all 0.3s ease-out;
+     -moz-transition: all 0.3s ease-out;
+      -ms-transition: all 0.3s ease-out;
+       -o-transition: all 0.3s ease-out;
+          transition: all 0.3s ease-out;
+}
+.helperLayer {
+  padding: 2px;
+  box-sizing: content-box;
+  position: absolute;
+  z-index: 9999998;
+  background-color: #FFF;
+  background-color: rgba(255,255,255,.9);
+  border: 1px solid #777;
+  border: 1px solid rgba(0,0,0,.5);
+  border-radius: 4px;
+  box-shadow: 0 2px 15px rgba(0,0,0,.4);
+  -webkit-transition: all 0.3s ease-out;
+     -moz-transition: all 0.3s ease-out;
+      -ms-transition: all 0.3s ease-out;
+       -o-transition: all 0.3s ease-out;
+          transition: all 0.3s ease-out;
 }

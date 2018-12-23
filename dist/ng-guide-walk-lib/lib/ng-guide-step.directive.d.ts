@@ -3,14 +3,17 @@ import { NgGuideWalkLibService } from './ng-guide-walk-lib.service';
 import { WalkLocation } from './guide-content/guide-content.component';
 export declare type StepStatus = 'BeforeOpen' | 'Open' | 'BeforeClose' | 'AfterClose';
 export declare class NgGuideStepDirective implements OnInit, OnDestroy {
+    private document;
     private elementRef;
     private viewContainerRef;
     private renderer;
     private injector;
     private resolver;
     private walkLibService;
+    private overlay;
     position: string;
     private _step;
+    rootElement: string;
     step: number | string;
     ngGuideStepContent: string | TemplateRef<any> | Type<any>;
     ngGuideStepLocation: WalkLocation;
@@ -22,7 +25,7 @@ export declare class NgGuideStepDirective implements OnInit, OnDestroy {
     ngGuideStepFocusElement: boolean;
     ngGuideStepStepStatus: EventEmitter<StepStatus>;
     private componentRef;
-    constructor(elementRef: ElementRef, viewContainerRef: ViewContainerRef, renderer: Renderer2, injector: Injector, resolver: ComponentFactoryResolver, walkLibService: NgGuideWalkLibService);
+    constructor(document: any, elementRef: ElementRef, viewContainerRef: ViewContainerRef, renderer: Renderer2, injector: Injector, resolver: ComponentFactoryResolver, walkLibService: NgGuideWalkLibService);
     ngOnInit(): void;
     ngOnDestroy(): void;
     private closeComponent;
@@ -31,6 +34,9 @@ export declare class NgGuideStepDirective implements OnInit, OnDestroy {
     generateNgContent(): any[][];
     private setInputs;
     private subscribeToGuideRequest;
+    private getOffset;
     private handleOverlay;
     private handleFocus;
+    private getRootElement;
+    private getRootOfAllElement;
 }

@@ -7,23 +7,25 @@ import {
   Type,
   EventEmitter,
   ComponentRef,
-  ComponentFactoryResolver, Renderer2, Injector, OnDestroy, OnInit, Output
+  ComponentFactoryResolver, Renderer2, Injector, OnDestroy, OnInit, Output, Inject
 } from '@angular/core';
 import { NgGuideWalkLibService } from './ng-guide-walk-lib.service';
 import { toNumber, unsignedOnDestroyed, toBoolean } from './utils';
 import { WalkEvent } from './ng-guide.types';
 import { takeUntil } from 'rxjs/operators';
 import { GuideContentComponent, WalkLocation } from './guide-content/guide-content.component';
-
+import { DOCUMENT } from '@angular/common';
 export type StepStatus = 'BeforeOpen' | 'Open' | 'BeforeClose' | 'AfterClose';
 
 @Directive({
   selector: '[ngGuideStep]',
 })
 export class NgGuideStepDirective implements OnInit, OnDestroy {
-
+  private overlay = null;
   position = 'below';
   private _step: number = 1;
+
+  @Input() rootElement = 'body';
 
   @Input('ngGuideStep') set step(stepNumber: number | string) {
     this._step = toNumber(stepNumber);
@@ -42,6 +44,7 @@ export class NgGuideStepDirective implements OnInit, OnDestroy {
 
   private componentRef: ComponentRef<GuideContentComponent>;
   constructor(
+    @Inject(DOCUMENT) private document: any,
     private elementRef: ElementRef,
     private viewContainerRef: ViewContainerRef,
     private renderer: Renderer2,
@@ -112,13 +115,48 @@ export class NgGuideStepDirective implements OnInit, OnDestroy {
       .pipe(takeUntil(unsignedOnDestroyed(this)))
       .subscribe((walkEvent: WalkEvent) => walkEvent.event === 'open' ? this.createComponent() : this.closeComponent());
   }
-
+  private getOffset(element) {
+    const body = document.body;
+    const docEl = document.documentElement;
+    const scrollTop = window.pageYOffset || docEl.scrollTop || body.scrollTop;
+    const scrollLeft = window.pageXOffset || docEl.scrollLeft || body.scrollLeft;
+    const x = element.getBoundingClientRect();
+    return {
+      top: x.top + scrollTop,
+      width: x.width,
+      height: x.height,
+      left: x.left + scrollLeft
+    };
+  }
   private handleOverlay() {
     if (toBoolean(this.ngGuideStepOverlay)) {
-      this.renderer.addClass(this.elementRef.nativeElement, 'overlay');
+      this.overlay = this.renderer.createElement('div');
+      // this.overlay.className = 'overlay';
+      this.renderer.addClass(this.overlay, 'overlay');
+      this.renderer.appendChild(this.getRootElement(), this.overlay);
+      const targetElm = this.elementRef.nativeElement;
+      // if (!targetElm.tagName || targetElm.tagName.toLowerCase() === 'body') {
+      //   const styleText = 'top: 0;bottom: 0; left: 0;right: 0;position: fixed;';
+      //   this.overlay.style.cssText = styleText;
+      // } else {
+      //   // set overlay layer position
+      //   const elementPosition = this.getOffset(targetElm);
+      //   if (elementPosition) {
+      //     const styleText = 'width: ' + elementPosition.width + 'px; height:' 
+      //     + elementPosition.height + 'px; top:' + elementPosition.top + 'px;left: ' + elementPosition.left + 'px;';
+      //     this.overlay.style.cssText = styleText;
+      //    }
+      // }
+      this.renderer.addClass(this.elementRef.nativeElement, 'helperLayer');
       this.componentRef.onDestroy(() => {
-        this.renderer.removeClass(this.elementRef.nativeElement, 'overlay');
-      });
+        this.renderer.removeChild(this.getRootElement(), this.overlay);
+          this.renderer.removeClass(this.elementRef.nativeElement, 'helperLayer');
+       });
+
+      // this.renderer.addClass(this.elementRef.nativeElement, 'overlay');
+      // this.componentRef.onDestroy(() => {
+      //  this.renderer.removeClass(this.elementRef.nativeElement, 'overlay');
+      // });
     }
   }
   private handleFocus() {
@@ -126,7 +164,18 @@ export class NgGuideStepDirective implements OnInit, OnDestroy {
       this.elementRef.nativeElement.focus();
     }
   }
-
+  private getRootElement() {
+    return this.document ? this.document.body : this.getRootOfAllElement();
+  }
+  private getRootOfAllElement() {
+    let last = this.renderer.parentNode(this.elementRef.nativeElement);
+    let res = null;
+    while (last && last.localName !== this.rootElement){
+      res = last;
+      last = this.renderer.parentNode(res);
+    }
+    return res;
+  }
 
 
 }
