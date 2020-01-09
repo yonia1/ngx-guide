@@ -25,7 +25,7 @@ export class NgGuideStepDirective implements OnInit, OnDestroy {
   position = 'below';
   private _step: number = 1;
 
-  @Input() rootElement = 'body';
+  @Input() rootElement = 'app-root';
 
   @Input('ngGuideStep') set step(stepNumber: number | string) {
     this._step = toNumber(stepNumber);
@@ -133,21 +133,10 @@ export class NgGuideStepDirective implements OnInit, OnDestroy {
       this.overlay = this.renderer.createElement('div');
       // this.overlay.className = 'overlay';
       this.renderer.addClass(this.overlay, 'overlay');
-      this.renderer.appendChild(this.getRootElement(), this.overlay);
+      this.tryAddOverlay();
       const targetElm = this.elementRef.nativeElement;
-      // if (!targetElm.tagName || targetElm.tagName.toLowerCase() === 'body') {
-      //   const styleText = 'top: 0;bottom: 0; left: 0;right: 0;position: fixed;';
-      //   this.overlay.style.cssText = styleText;
-      // } else {
-      //   // set overlay layer position
-      //   const elementPosition = this.getOffset(targetElm);
-      //   if (elementPosition) {
-      //     const styleText = 'width: ' + elementPosition.width + 'px; height:' 
-      //     + elementPosition.height + 'px; top:' + elementPosition.top + 'px;left: ' + elementPosition.left + 'px;';
-      //     this.overlay.style.cssText = styleText;
-      //    }
-      // }
-      this.renderer.addClass(this.elementRef.nativeElement, 'helperLayer');
+      
+      this.renderer.addClass(targetElm, 'helperLayer');
       this.componentRef.onDestroy(() => {
         this.renderer.removeChild(this.getRootElement(), this.overlay);
           this.renderer.removeClass(this.elementRef.nativeElement, 'helperLayer');
@@ -159,13 +148,19 @@ export class NgGuideStepDirective implements OnInit, OnDestroy {
       // });
     }
   }
+  private tryAddOverlay() {
+    try {
+      this.renderer.appendChild(this.getRootElement(), this.overlay);
+    } catch (e) {}
+  }
+
   private handleFocus() {
     if (toBoolean(this.ngGuideStepFocusElement)) {
       this.elementRef.nativeElement.focus();
     }
   }
   private getRootElement() {
-    return this.document ? this.document.body : this.getRootOfAllElement();
+    return !this.document ? this.document.body : this.getRootOfAllElement();
   }
   private getRootOfAllElement() {
     let last = this.renderer.parentNode(this.elementRef.nativeElement);
@@ -173,6 +168,9 @@ export class NgGuideStepDirective implements OnInit, OnDestroy {
     while (last && last.localName !== this.rootElement){
       res = last;
       last = this.renderer.parentNode(res);
+    }
+    if (last) {
+      res = last;
     }
     return res;
   }

@@ -1,12 +1,13 @@
+import { Injectable, ɵɵdefineInjectable, Component, ViewEncapsulation, ElementRef, Renderer2, Input, EventEmitter, TemplateRef, Directive, Inject, ViewContainerRef, Injector, ComponentFactoryResolver, Output, NgModule } from '@angular/core';
 import { Subject, ReplaySubject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
-import { Injectable, Component, NgModule, Directive, ViewContainerRef, ElementRef, Input, TemplateRef, EventEmitter, ComponentFactoryResolver, Renderer2, Injector, Output, Inject, ViewEncapsulation, defineInjectable } from '@angular/core';
 import Popper from 'popper.js';
 import { DOCUMENT, CommonModule } from '@angular/common';
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+ * Generated from: lib/ng-guide-walk-lib.service.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 var NgGuideWalkLibService = /** @class */ (function () {
     function NgGuideWalkLibService() {
@@ -52,7 +53,11 @@ var NgGuideWalkLibService = /** @class */ (function () {
      * @return {?}
      */
     function (step) {
-        this.activeSteps = this.activeSteps.filter(function (stepNumber) { return stepNumber !== step; });
+        this.activeSteps = this.activeSteps.filter((/**
+         * @param {?} stepNumber
+         * @return {?}
+         */
+        function (stepNumber) { return stepNumber !== step; }));
     };
     /**
      * @param {?} step
@@ -103,9 +108,11 @@ var NgGuideWalkLibService = /** @class */ (function () {
         this.eventWalkSubject.next({ step: stepNum, event: 'open' });
     };
     /**
+     * @private
      * @return {?}
      */
     NgGuideWalkLibService.prototype.closeCurrentStep = /**
+     * @private
      * @return {?}
      */
     function () {
@@ -139,7 +146,11 @@ var NgGuideWalkLibService = /** @class */ (function () {
     function (stepNum) {
         return this.eventWalkSubject
             .asObservable()
-            .pipe(filter(function (item) { return item.step === stepNum; }));
+            .pipe(filter((/**
+         * @param {?} item
+         * @return {?}
+         */
+        function (item) { return item.step === stepNum; })));
     };
     NgGuideWalkLibService.decorators = [
         { type: Injectable, args: [{
@@ -148,13 +159,36 @@ var NgGuideWalkLibService = /** @class */ (function () {
     ];
     /** @nocollapse */
     NgGuideWalkLibService.ctorParameters = function () { return []; };
-    /** @nocollapse */ NgGuideWalkLibService.ngInjectableDef = defineInjectable({ factory: function NgGuideWalkLibService_Factory() { return new NgGuideWalkLibService(); }, token: NgGuideWalkLibService, providedIn: "root" });
+    /** @nocollapse */ NgGuideWalkLibService.ngInjectableDef = ɵɵdefineInjectable({ factory: function NgGuideWalkLibService_Factory() { return new NgGuideWalkLibService(); }, token: NgGuideWalkLibService, providedIn: "root" });
     return NgGuideWalkLibService;
 }());
+if (false) {
+    /**
+     * @type {?}
+     * @private
+     */
+    NgGuideWalkLibService.prototype.activeSteps;
+    /**
+     * @type {?}
+     * @private
+     */
+    NgGuideWalkLibService.prototype.eventWalkSubject;
+    /**
+     * @type {?}
+     * @private
+     */
+    NgGuideWalkLibService.prototype.currentStep;
+    /**
+     * @type {?}
+     * @private
+     */
+    NgGuideWalkLibService.prototype._config;
+}
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+ * Generated from: lib/ng-guide-walk-lib.component.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 var NgGuideWalkLibComponent = /** @class */ (function () {
     function NgGuideWalkLibComponent() {
@@ -180,7 +214,8 @@ var NgGuideWalkLibComponent = /** @class */ (function () {
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+ * Generated from: lib/utils/index.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 /**
  *
@@ -200,11 +235,14 @@ function unsignedOnDestroyed(component) {
     var oldNgOnDestroy = component.ngOnDestroy;
     /** @type {?} */
     var onDestroySubject$ = new ReplaySubject(1);
-    component.ngOnDestroy = function () {
+    component.ngOnDestroy = (/**
+     * @return {?}
+     */
+    function () {
         oldNgOnDestroy.apply(component);
         onDestroySubject$.next(undefined);
         onDestroySubject$.complete();
-    };
+    });
     return onDestroySubject$;
 }
 /**
@@ -217,7 +255,8 @@ function toBoolean(value) {
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+ * Generated from: lib/guide-content/guide-content.component.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 var GuideContentComponent = /** @class */ (function () {
     function GuideContentComponent(_element, _renderer, host, guideService) {
@@ -308,9 +347,11 @@ var GuideContentComponent = /** @class */ (function () {
         this.guideService.stopGuide();
     };
     /**
+     * @private
      * @return {?}
      */
     GuideContentComponent.prototype.getNode = /**
+     * @private
      * @return {?}
      */
     function () {
@@ -327,9 +368,11 @@ var GuideContentComponent = /** @class */ (function () {
         }
     };
     /**
+     * @private
      * @return {?}
      */
     GuideContentComponent.prototype.clean = /**
+     * @private
      * @return {?}
      */
     function () {
@@ -343,7 +386,7 @@ var GuideContentComponent = /** @class */ (function () {
                     encapsulation: ViewEncapsulation.None,
                     selector: 'ng-guide-content',
                     template: "<div class=\"ngx-guide\"\n[ngStyle]=\"customCss\"\n[class.visible]=\"show\">\n \n  <ng-content></ng-content>\n  <hr>\n  \n  <button type=\"button\" class=\"ngx-guide__close\" (click)=\"next()\">\n    next\n  </button>\n  <button type=\"button\" class=\"ngx-guide__close\" (click)=\"done()\">\n    done\n  </button>\n  \n  <div *ngIf=\"displayArrow\" [ngStyle]=\"customCss\" class=\"ngx-guide__arrow\" x-arrow></div>\n</div>",
-                    styles: [".ngx-guide{position:absolute;background:#ffc107;color:#fff;opacity:.85;width:150px;border-radius:3px;box-shadow:0 0 2px rgba(0,0,0,.5);padding:10px;text-align:center;z-index:9999}.ngx-guide:not(.visible){display:none}.ngx-guide .ngx-guide__arrow{width:0;height:0;border-style:solid;border-color:#ffc107;position:absolute;margin:5px}.ngx-guide[x-placement^=top]{margin-bottom:5px}.ngx-guide[x-placement^=top] .ngx-guide__arrow{border-width:5px 5px 0;border-left-color:transparent;border-right-color:transparent;border-bottom-color:transparent;bottom:-5px;left:calc(50% - 5px);margin-top:0;margin-bottom:0}.ngx-guide[x-placement^=bottom]{margin-top:10px}.ngx-guide[x-placement^=bottom] .ngx-guide__arrow{border-width:0 5px 5px;border-left-color:transparent;border-right-color:transparent;border-top-color:transparent;top:-5px;left:calc(50% - 5px);margin-top:0;margin-bottom:0}.ngx-guide[x-placement^=right]{margin-left:10px}.ngx-guide[x-placement^=right] .ngx-guide__arrow{border-width:5px 5px 5px 0;border-left-color:transparent;border-top-color:transparent;border-bottom-color:transparent;left:-5px;top:calc(50% - 5px);margin-left:0;margin-right:0}.ngx-guide[x-placement^=left]{margin-right:10px}.ngx-guide[x-placement^=left] .ngx-guide__arrow{border-width:5px 0 5px 5px;border-top-color:transparent;border-right-color:transparent;border-bottom-color:transparent;right:-5px;top:calc(50% - 5px);margin-left:0;margin-right:0}.overlay{top:0;bottom:0;left:0;right:0;opacity:.8;position:absolute;box-sizing:content-box;z-index:99;background-color:#000;opacity:.55;background:radial-gradient(center,ellipse farthest-corner,rgba(0,0,0,.4) 0,rgba(0,0,0,.9) 100%);transition:.3s ease-out}.helperLayer{padding:2px;box-sizing:content-box;position:absolute;z-index:9999998;background-color:rgba(255,255,255,.9);border:1px solid rgba(0,0,0,.5);border-radius:4px;box-shadow:0 2px 15px rgba(0,0,0,.4);transition:.3s ease-out}"]
+                    styles: [".ngx-guide{position:absolute;background:#ffc107;color:#fff;opacity:.85;width:150px;border-radius:3px;box-shadow:0 0 2px rgba(0,0,0,.5);padding:10px;text-align:center;z-index:9999}.ngx-guide:not(.visible){display:none}.ngx-guide .ngx-guide__arrow{width:0;height:0;border-style:solid;border-color:#ffc107;position:absolute;margin:5px}.ngx-guide[x-placement^=top]{margin-bottom:5px}.ngx-guide[x-placement^=top] .ngx-guide__arrow{border-width:5px 5px 0;border-left-color:transparent;border-right-color:transparent;border-bottom-color:transparent;bottom:-5px;left:calc(50% - 5px);margin-top:0;margin-bottom:0}.ngx-guide[x-placement^=bottom]{margin-top:10px}.ngx-guide[x-placement^=bottom] .ngx-guide__arrow{border-width:0 5px 5px;border-left-color:transparent;border-right-color:transparent;border-top-color:transparent;top:-5px;left:calc(50% - 5px);margin-top:0;margin-bottom:0}.ngx-guide[x-placement^=right]{margin-left:10px}.ngx-guide[x-placement^=right] .ngx-guide__arrow{border-width:5px 5px 5px 0;border-left-color:transparent;border-top-color:transparent;border-bottom-color:transparent;left:-5px;top:calc(50% - 5px);margin-left:0;margin-right:0}.ngx-guide[x-placement^=left]{margin-right:10px}.ngx-guide[x-placement^=left] .ngx-guide__arrow{border-width:5px 0 5px 5px;border-top-color:transparent;border-right-color:transparent;border-bottom-color:transparent;right:-5px;top:calc(50% - 5px);margin-left:0;margin-right:0}.overlay{top:0;bottom:0;left:0;right:0;opacity:.8;position:absolute;box-sizing:content-box;z-index:99;background-color:#000;opacity:.55;background:radial-gradient(center,ellipse farthest-corner,rgba(0,0,0,.4) 0,rgba(0,0,0,.9) 100%);-webkit-transition:.3s ease-out;transition:.3s ease-out}.helperLayer{padding:2px;box-sizing:content-box;position:absolute;z-index:9999998;background-color:rgba(255,255,255,.9);border:1px solid rgba(0,0,0,.5);border-radius:4px;box-shadow:0 2px 15px rgba(0,0,0,.4);-webkit-transition:.3s ease-out;transition:.3s ease-out}"]
                 }] }
     ];
     /** @nocollapse */
@@ -366,10 +409,68 @@ var GuideContentComponent = /** @class */ (function () {
     };
     return GuideContentComponent;
 }());
+if (false) {
+    /**
+     * @type {?}
+     * @private
+     */
+    GuideContentComponent.prototype.currentAction;
+    /**
+     * @type {?}
+     * @private
+     */
+    GuideContentComponent.prototype._step;
+    /**
+     * @type {?}
+     * @private
+     */
+    GuideContentComponent.prototype.popper;
+    /** @type {?} */
+    GuideContentComponent.prototype.show;
+    /** @type {?} */
+    GuideContentComponent.prototype.overlayObject;
+    /** @type {?} */
+    GuideContentComponent.prototype.shouldCreateOverlay;
+    /** @type {?} */
+    GuideContentComponent.prototype.modifiers;
+    /** @type {?} */
+    GuideContentComponent.prototype.positionFixed;
+    /** @type {?} */
+    GuideContentComponent.prototype.eventsEnabled;
+    /** @type {?} */
+    GuideContentComponent.prototype.target;
+    /** @type {?} */
+    GuideContentComponent.prototype.location;
+    /** @type {?} */
+    GuideContentComponent.prototype.displayArrow;
+    /** @type {?} */
+    GuideContentComponent.prototype.customCss;
+    /**
+     * @type {?}
+     * @private
+     */
+    GuideContentComponent.prototype._element;
+    /**
+     * @type {?}
+     * @private
+     */
+    GuideContentComponent.prototype._renderer;
+    /**
+     * @type {?}
+     * @private
+     */
+    GuideContentComponent.prototype.host;
+    /**
+     * @type {?}
+     * @private
+     */
+    GuideContentComponent.prototype.guideService;
+}
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+ * Generated from: lib/ng-guide-step.directive.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 var NgGuideStepDirective = /** @class */ (function () {
     function NgGuideStepDirective(document, elementRef, viewContainerRef, renderer, injector, resolver, walkLibService) {
@@ -383,7 +484,7 @@ var NgGuideStepDirective = /** @class */ (function () {
         this.overlay = null;
         this.position = 'below';
         this._step = 1;
-        this.rootElement = 'body';
+        this.rootElement = 'app-root';
         this.ngGuideStepLocation = 'bottom';
         this.ngGuideStepStyle = null;
         this.ngGuideStepDisplayArrow = true;
@@ -429,9 +530,11 @@ var NgGuideStepDirective = /** @class */ (function () {
         this.walkLibService.unregister((/** @type {?} */ (this.step)));
     };
     /**
+     * @private
      * @return {?}
      */
     NgGuideStepDirective.prototype.closeComponent = /**
+     * @private
      * @return {?}
      */
     function () {
@@ -444,9 +547,11 @@ var NgGuideStepDirective = /** @class */ (function () {
         this.ngGuideStepStepStatus.emit('AfterClose');
     };
     /**
+     * @private
      * @return {?}
      */
     NgGuideStepDirective.prototype.generateComponent = /**
+     * @private
      * @return {?}
      */
     function () {
@@ -462,9 +567,11 @@ var NgGuideStepDirective = /** @class */ (function () {
         this.ngGuideStepStepStatus.emit('Open');
     };
     /**
+     * @private
      * @return {?}
      */
     NgGuideStepDirective.prototype.createComponent = /**
+     * @private
      * @return {?}
      */
     function () {
@@ -497,9 +604,11 @@ var NgGuideStepDirective = /** @class */ (function () {
         return [[viewRef.location.nativeElement]];
     };
     /**
+     * @private
      * @return {?}
      */
     NgGuideStepDirective.prototype.setInputs = /**
+     * @private
      * @return {?}
      */
     function () {
@@ -514,22 +623,30 @@ var NgGuideStepDirective = /** @class */ (function () {
         }
     };
     /**
+     * @private
      * @return {?}
      */
     NgGuideStepDirective.prototype.subscribeToGuideRequest = /**
+     * @private
      * @return {?}
      */
     function () {
         var _this = this;
         this.walkLibService.getStepObservable((/** @type {?} */ (this.step)))
             .pipe(takeUntil(unsignedOnDestroyed(this)))
-            .subscribe(function (walkEvent) { return walkEvent.event === 'open' ? _this.createComponent() : _this.closeComponent(); });
+            .subscribe((/**
+         * @param {?} walkEvent
+         * @return {?}
+         */
+        function (walkEvent) { return walkEvent.event === 'open' ? _this.createComponent() : _this.closeComponent(); }));
     };
     /**
+     * @private
      * @param {?} element
      * @return {?}
      */
     NgGuideStepDirective.prototype.getOffset = /**
+     * @private
      * @param {?} element
      * @return {?}
      */
@@ -552,9 +669,11 @@ var NgGuideStepDirective = /** @class */ (function () {
         };
     };
     /**
+     * @private
      * @return {?}
      */
     NgGuideStepDirective.prototype.handleOverlay = /**
+     * @private
      * @return {?}
      */
     function () {
@@ -563,26 +682,17 @@ var NgGuideStepDirective = /** @class */ (function () {
             this.overlay = this.renderer.createElement('div');
             // this.overlay.className = 'overlay';
             this.renderer.addClass(this.overlay, 'overlay');
-            this.renderer.appendChild(this.getRootElement(), this.overlay);
+            this.tryAddOverlay();
             /** @type {?} */
             var targetElm = this.elementRef.nativeElement;
-            // if (!targetElm.tagName || targetElm.tagName.toLowerCase() === 'body') {
-            //   const styleText = 'top: 0;bottom: 0; left: 0;right: 0;position: fixed;';
-            //   this.overlay.style.cssText = styleText;
-            // } else {
-            //   // set overlay layer position
-            //   const elementPosition = this.getOffset(targetElm);
-            //   if (elementPosition) {
-            //     const styleText = 'width: ' + elementPosition.width + 'px; height:' 
-            //     + elementPosition.height + 'px; top:' + elementPosition.top + 'px;left: ' + elementPosition.left + 'px;';
-            //     this.overlay.style.cssText = styleText;
-            //    }
-            // }
-            this.renderer.addClass(this.elementRef.nativeElement, 'helperLayer');
-            this.componentRef.onDestroy(function () {
+            this.renderer.addClass(targetElm, 'helperLayer');
+            this.componentRef.onDestroy((/**
+             * @return {?}
+             */
+            function () {
                 _this.renderer.removeChild(_this.getRootElement(), _this.overlay);
                 _this.renderer.removeClass(_this.elementRef.nativeElement, 'helperLayer');
-            });
+            }));
             // this.renderer.addClass(this.elementRef.nativeElement, 'overlay');
             // this.componentRef.onDestroy(() => {
             //  this.renderer.removeClass(this.elementRef.nativeElement, 'overlay');
@@ -590,9 +700,25 @@ var NgGuideStepDirective = /** @class */ (function () {
         }
     };
     /**
+     * @private
+     * @return {?}
+     */
+    NgGuideStepDirective.prototype.tryAddOverlay = /**
+     * @private
+     * @return {?}
+     */
+    function () {
+        try {
+            this.renderer.appendChild(this.getRootElement(), this.overlay);
+        }
+        catch (e) { }
+    };
+    /**
+     * @private
      * @return {?}
      */
     NgGuideStepDirective.prototype.handleFocus = /**
+     * @private
      * @return {?}
      */
     function () {
@@ -601,18 +727,22 @@ var NgGuideStepDirective = /** @class */ (function () {
         }
     };
     /**
+     * @private
      * @return {?}
      */
     NgGuideStepDirective.prototype.getRootElement = /**
+     * @private
      * @return {?}
      */
     function () {
-        return this.document ? this.document.body : this.getRootOfAllElement();
+        return !this.document ? this.document.body : this.getRootOfAllElement();
     };
     /**
+     * @private
      * @return {?}
      */
     NgGuideStepDirective.prototype.getRootOfAllElement = /**
+     * @private
      * @return {?}
      */
     function () {
@@ -623,6 +753,9 @@ var NgGuideStepDirective = /** @class */ (function () {
         while (last && last.localName !== this.rootElement) {
             res = last;
             last = this.renderer.parentNode(res);
+        }
+        if (last) {
+            res = last;
         }
         return res;
     };
@@ -654,10 +787,81 @@ var NgGuideStepDirective = /** @class */ (function () {
     };
     return NgGuideStepDirective;
 }());
+if (false) {
+    /**
+     * @type {?}
+     * @private
+     */
+    NgGuideStepDirective.prototype.overlay;
+    /** @type {?} */
+    NgGuideStepDirective.prototype.position;
+    /**
+     * @type {?}
+     * @private
+     */
+    NgGuideStepDirective.prototype._step;
+    /** @type {?} */
+    NgGuideStepDirective.prototype.rootElement;
+    /** @type {?} */
+    NgGuideStepDirective.prototype.ngGuideStepContent;
+    /** @type {?} */
+    NgGuideStepDirective.prototype.ngGuideStepLocation;
+    /** @type {?} */
+    NgGuideStepDirective.prototype.ngGuideStepStyle;
+    /** @type {?} */
+    NgGuideStepDirective.prototype.ngGuideStepDisplayArrow;
+    /** @type {?} */
+    NgGuideStepDirective.prototype.ngGuideStepOverlay;
+    /** @type {?} */
+    NgGuideStepDirective.prototype.ngGuideStepFocusElement;
+    /** @type {?} */
+    NgGuideStepDirective.prototype.ngGuideStepStepStatus;
+    /**
+     * @type {?}
+     * @private
+     */
+    NgGuideStepDirective.prototype.componentRef;
+    /**
+     * @type {?}
+     * @private
+     */
+    NgGuideStepDirective.prototype.document;
+    /**
+     * @type {?}
+     * @private
+     */
+    NgGuideStepDirective.prototype.elementRef;
+    /**
+     * @type {?}
+     * @private
+     */
+    NgGuideStepDirective.prototype.viewContainerRef;
+    /**
+     * @type {?}
+     * @private
+     */
+    NgGuideStepDirective.prototype.renderer;
+    /**
+     * @type {?}
+     * @private
+     */
+    NgGuideStepDirective.prototype.injector;
+    /**
+     * @type {?}
+     * @private
+     */
+    NgGuideStepDirective.prototype.resolver;
+    /**
+     * @type {?}
+     * @private
+     */
+    NgGuideStepDirective.prototype.walkLibService;
+}
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+ * Generated from: lib/ng-guide-walk-lib.module.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 var NgGuideWalkLibModule = /** @class */ (function () {
     function NgGuideWalkLibModule() {
@@ -700,14 +904,15 @@ var NgGuideWalkLibModule = /** @class */ (function () {
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+ * Generated from: public_api.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+ * Generated from: ng-guide-walk.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 
-export { NgGuideWalkLibService, NgGuideWalkLibComponent, NgGuideWalkLibModule, NgGuideStepDirective, GuideContentComponent };
-
+export { GuideContentComponent, NgGuideStepDirective, NgGuideWalkLibComponent, NgGuideWalkLibModule, NgGuideWalkLibService };
 //# sourceMappingURL=ng-guide-walk.js.map

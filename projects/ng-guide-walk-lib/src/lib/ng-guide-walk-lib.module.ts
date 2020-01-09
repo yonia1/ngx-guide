@@ -6,7 +6,6 @@ import { GuideContentComponent } from './guide-content/guide-content.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgGuideWalkLibService } from './ng-guide-walk-lib.service';
 import { CommonModule } from '@angular/common';
-
 @NgModule({
   imports: [
     CommonModule,
@@ -23,10 +22,9 @@ import { CommonModule } from '@angular/common';
 })
 export class NgGuideWalkLibModule {
   static forRoot(): ModuleWithProviders {
+
     return {
-
       ngModule: NgGuideWalkLibModule,
-
       providers: [
 
         {

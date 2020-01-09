@@ -36,6 +36,7 @@ export declare class NgGuideStepDirective implements OnInit, OnDestroy {
     private subscribeToGuideRequest;
     private getOffset;
     private handleOverlay;
+    private tryAddOverlay;
     private handleFocus;
     private getRootElement;
     private getRootOfAllElement;

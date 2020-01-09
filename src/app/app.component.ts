@@ -9,7 +9,7 @@ import { NgGuideWalkLibService } from 'projects/ng-guide-walk-lib/src/public_api
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  title = 'Angular tour';
   customStyle = {
     'background-color': 'red',
     'color': 'green',

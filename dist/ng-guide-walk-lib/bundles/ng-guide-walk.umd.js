@@ -1,14 +1,15 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('rxjs'), require('rxjs/operators'), require('@angular/core'), require('popper.js'), require('@angular/common')) :
-    typeof define === 'function' && define.amd ? define('ng-guide-walk', ['exports', 'rxjs', 'rxjs/operators', '@angular/core', 'popper.js', '@angular/common'], factory) :
-    (factory((global['ng-guide-walk'] = {}),global.rxjs,global.rxjs.operators,global.ng.core,global.Popper,global.ng.common));
-}(this, (function (exports,rxjs,operators,i0,Popper,common) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('rxjs'), require('rxjs/operators'), require('popper.js'), require('@angular/common')) :
+    typeof define === 'function' && define.amd ? define('ng-guide-walk', ['exports', '@angular/core', 'rxjs', 'rxjs/operators', 'popper.js', '@angular/common'], factory) :
+    (global = global || self, factory(global['ng-guide-walk'] = {}, global.ng.core, global.rxjs, global.rxjs.operators, global.Popper, global.ng.common));
+}(this, (function (exports, core, rxjs, operators, Popper, common) { 'use strict';
 
     Popper = Popper && Popper.hasOwnProperty('default') ? Popper['default'] : Popper;
 
     /**
      * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+     * Generated from: lib/ng-guide-walk-lib.service.ts
+     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     var NgGuideWalkLibService = /** @class */ (function () {
         function NgGuideWalkLibService() {
@@ -20,13 +21,15 @@
         Object.defineProperty(NgGuideWalkLibService.prototype, "config", {
             get: /**
              * @return {?}
-             */ function () {
+             */
+            function () {
                 return this._config;
             },
             set: /**
              * @param {?} config
              * @return {?}
-             */ function (config) {
+             */
+            function (config) {
                 this._config = config;
             },
             enumerable: true,
@@ -40,9 +43,9 @@
          * @param {?} step
          * @return {?}
          */
-            function (step) {
-                this.activeSteps.push(step);
-            };
+        function (step) {
+            this.activeSteps.push(step);
+        };
         /**
          * @param {?} step
          * @return {?}
@@ -51,9 +54,13 @@
          * @param {?} step
          * @return {?}
          */
-            function (step) {
-                this.activeSteps = this.activeSteps.filter(function (stepNumber) { return stepNumber !== step; });
-            };
+        function (step) {
+            this.activeSteps = this.activeSteps.filter((/**
+             * @param {?} stepNumber
+             * @return {?}
+             */
+            function (stepNumber) { return stepNumber !== step; }));
+        };
         /**
          * @param {?} step
          * @return {?}
@@ -62,33 +69,33 @@
          * @param {?} step
          * @return {?}
          */
-            function (step) {
-                return this.currentStep ? (this.activeSteps.length) === step : true;
-            };
+        function (step) {
+            return this.currentStep ? (this.activeSteps.length) === step : true;
+        };
         /**
          * @return {?}
          */
         NgGuideWalkLibService.prototype.stopGuide = /**
          * @return {?}
          */
-            function () {
-                this.closeCurrentStep();
-                this.currentStep = undefined;
-            };
+        function () {
+            this.closeCurrentStep();
+            this.currentStep = undefined;
+        };
         /**
          * @return {?}
          */
         NgGuideWalkLibService.prototype.startGuide = /**
          * @return {?}
          */
-            function () {
-                this.activeSteps.sort();
-                if (this.currentStep) {
-                    return;
-                }
-                this.currentStep = 1;
-                this.invokeStep(this.currentStep);
-            };
+        function () {
+            this.activeSteps.sort();
+            if (this.currentStep) {
+                return;
+            }
+            this.currentStep = 1;
+            this.invokeStep(this.currentStep);
+        };
         /**
          * @param {?} stepNum
          * @return {?}
@@ -97,37 +104,39 @@
          * @param {?} stepNum
          * @return {?}
          */
-            function (stepNum) {
-                this.closeCurrentStep();
-                this.currentStep = this.activeSteps[stepNum - 1];
-                this.eventWalkSubject.next({ step: stepNum, event: 'open' });
-            };
+        function (stepNum) {
+            this.closeCurrentStep();
+            this.currentStep = this.activeSteps[stepNum - 1];
+            this.eventWalkSubject.next({ step: stepNum, event: 'open' });
+        };
         /**
+         * @private
          * @return {?}
          */
         NgGuideWalkLibService.prototype.closeCurrentStep = /**
+         * @private
          * @return {?}
          */
-            function () {
-                if (this.currentStep) {
-                    this.eventWalkSubject.next({ step: this.currentStep, event: 'close' });
-                }
-            };
+        function () {
+            if (this.currentStep) {
+                this.eventWalkSubject.next({ step: this.currentStep, event: 'close' });
+            }
+        };
         /**
          * @return {?}
          */
         NgGuideWalkLibService.prototype.nextGuide = /**
          * @return {?}
          */
-            function () {
-                this.closeCurrentStep();
-                if (this.isLast(this.currentStep)) {
-                    this.currentStep = undefined;
-                    return; // and we are done for this tour
-                }
-                this.currentStep++;
-                this.invokeStep(this.currentStep);
-            };
+        function () {
+            this.closeCurrentStep();
+            if (this.isLast(this.currentStep)) {
+                this.currentStep = undefined;
+                return; // and we are done for this tour
+            }
+            this.currentStep++;
+            this.invokeStep(this.currentStep);
+        };
         /**
          * @param {?} stepNum
          * @return {?}
@@ -136,25 +145,52 @@
          * @param {?} stepNum
          * @return {?}
          */
-            function (stepNum) {
-                return this.eventWalkSubject
-                    .asObservable()
-                    .pipe(operators.filter(function (item) { return item.step === stepNum; }));
-            };
+        function (stepNum) {
+            return this.eventWalkSubject
+                .asObservable()
+                .pipe(operators.filter((/**
+             * @param {?} item
+             * @return {?}
+             */
+            function (item) { return item.step === stepNum; })));
+        };
         NgGuideWalkLibService.decorators = [
-            { type: i0.Injectable, args: [{
+            { type: core.Injectable, args: [{
                         providedIn: 'root'
                     },] }
         ];
         /** @nocollapse */
         NgGuideWalkLibService.ctorParameters = function () { return []; };
-        /** @nocollapse */ NgGuideWalkLibService.ngInjectableDef = i0.defineInjectable({ factory: function NgGuideWalkLibService_Factory() { return new NgGuideWalkLibService(); }, token: NgGuideWalkLibService, providedIn: "root" });
+        /** @nocollapse */ NgGuideWalkLibService.ngInjectableDef = core.ɵɵdefineInjectable({ factory: function NgGuideWalkLibService_Factory() { return new NgGuideWalkLibService(); }, token: NgGuideWalkLibService, providedIn: "root" });
         return NgGuideWalkLibService;
     }());
+    if (false) {
+        /**
+         * @type {?}
+         * @private
+         */
+        NgGuideWalkLibService.prototype.activeSteps;
+        /**
+         * @type {?}
+         * @private
+         */
+        NgGuideWalkLibService.prototype.eventWalkSubject;
+        /**
+         * @type {?}
+         * @private
+         */
+        NgGuideWalkLibService.prototype.currentStep;
+        /**
+         * @type {?}
+         * @private
+         */
+        NgGuideWalkLibService.prototype._config;
+    }
 
     /**
      * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+     * Generated from: lib/ng-guide-walk-lib.component.ts
+     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     var NgGuideWalkLibComponent = /** @class */ (function () {
         function NgGuideWalkLibComponent() {
@@ -165,10 +201,10 @@
         NgGuideWalkLibComponent.prototype.ngOnInit = /**
          * @return {?}
          */
-            function () {
-            };
+        function () {
+        };
         NgGuideWalkLibComponent.decorators = [
-            { type: i0.Component, args: [{
+            { type: core.Component, args: [{
                         selector: 'ng-guide-walk',
                         template: "\n    <p>\n      ng-guide-walk-lib works!\n    </p>\n    <ng-content></ng-content>\n  "
                     }] }
@@ -180,7 +216,8 @@
 
     /**
      * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+     * Generated from: lib/utils/index.ts
+     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     /**
      *
@@ -200,11 +237,14 @@
         var oldNgOnDestroy = component.ngOnDestroy;
         /** @type {?} */
         var onDestroySubject$ = new rxjs.ReplaySubject(1);
-        component.ngOnDestroy = function () {
+        component.ngOnDestroy = (/**
+         * @return {?}
+         */
+        function () {
             oldNgOnDestroy.apply(component);
             onDestroySubject$.next(undefined);
             onDestroySubject$.complete();
-        };
+        });
         return onDestroySubject$;
     }
     /**
@@ -217,7 +257,8 @@
 
     /**
      * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+     * Generated from: lib/guide-content/guide-content.component.ts
+     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     var GuideContentComponent = /** @class */ (function () {
         function GuideContentComponent(_element, _renderer, host, guideService) {
@@ -239,13 +280,15 @@
         Object.defineProperty(GuideContentComponent.prototype, "step", {
             get: /**
              * @return {?}
-             */ function () {
+             */
+            function () {
                 return this._step;
             },
             set: /**
              * @param {?} step
              * @return {?}
-             */ function (step) {
+             */
+            function (step) {
                 this._step = toNumber(step);
             },
             enumerable: true,
@@ -257,119 +300,179 @@
         GuideContentComponent.prototype.ngOnInit = /**
          * @return {?}
          */
-            function () {
-                // todo : move to an action trigger when needed
-                // todo : move to an action trigger when needed
-                var _a = this, location = _a.location, positionFixed = _a.positionFixed, eventsEnabled = _a.eventsEnabled, modifiers = _a.modifiers;
-                this.popper = new Popper(this.getNode(), this._element.nativeElement.querySelector('.ngx-guide'), ( /** @type {?} */({
-                    placement: location,
-                    positionFixed: positionFixed,
-                    eventsEnabled: eventsEnabled,
-                    modifiers: modifiers
-                })));
-            };
+        function () {
+            // todo : move to an action trigger when needed
+            // todo : move to an action trigger when needed
+            var _a = this, location = _a.location, positionFixed = _a.positionFixed, eventsEnabled = _a.eventsEnabled, modifiers = _a.modifiers;
+            this.popper = new Popper(this.getNode(), this._element.nativeElement.querySelector('.ngx-guide'), (/** @type {?} */ ({
+                placement: location,
+                positionFixed: positionFixed,
+                eventsEnabled: eventsEnabled,
+                modifiers: modifiers
+            })));
+        };
         /**
          * @return {?}
          */
         GuideContentComponent.prototype.ngOnDestroy = /**
          * @return {?}
          */
-            function () {
-                this.popper.destroy();
-                this.clean();
-            };
+        function () {
+            this.popper.destroy();
+            this.clean();
+        };
         /**
          * @return {?}
          */
         GuideContentComponent.prototype.next = /**
          * @return {?}
          */
-            function () {
-                this.guideService.nextGuide();
-            };
+        function () {
+            this.guideService.nextGuide();
+        };
         /**
          * @return {?}
          */
         GuideContentComponent.prototype.isLast = /**
          * @return {?}
          */
-            function () {
-                return this.guideService.isLast(this.step);
-            };
+        function () {
+            return this.guideService.isLast(this.step);
+        };
         /**
          * @return {?}
          */
         GuideContentComponent.prototype.done = /**
          * @return {?}
          */
-            function () {
-                this.guideService.stopGuide();
-            };
+        function () {
+            this.guideService.stopGuide();
+        };
         /**
+         * @private
          * @return {?}
          */
         GuideContentComponent.prototype.getNode = /**
+         * @private
          * @return {?}
          */
-            function () {
-                if (this.target) {
-                    if (typeof this.target === 'string') {
-                        return document.querySelector(this.target);
-                    }
-                    else {
-                        return this.target;
-                    }
+        function () {
+            if (this.target) {
+                if (typeof this.target === 'string') {
+                    return document.querySelector(this.target);
                 }
                 else {
-                    return this._element.nativeElement;
+                    return this.target;
                 }
-            };
+            }
+            else {
+                return this._element.nativeElement;
+            }
+        };
         /**
+         * @private
          * @return {?}
          */
         GuideContentComponent.prototype.clean = /**
+         * @private
          * @return {?}
          */
-            function () {
-                if (!this.overlayObject) {
-                    return;
-                }
-                this.overlayObject.style.display = 'none';
-            };
+        function () {
+            if (!this.overlayObject) {
+                return;
+            }
+            this.overlayObject.style.display = 'none';
+        };
         GuideContentComponent.decorators = [
-            { type: i0.Component, args: [{
-                        encapsulation: i0.ViewEncapsulation.None,
+            { type: core.Component, args: [{
+                        encapsulation: core.ViewEncapsulation.None,
                         selector: 'ng-guide-content',
                         template: "<div class=\"ngx-guide\"\n[ngStyle]=\"customCss\"\n[class.visible]=\"show\">\n \n  <ng-content></ng-content>\n  <hr>\n  \n  <button type=\"button\" class=\"ngx-guide__close\" (click)=\"next()\">\n    next\n  </button>\n  <button type=\"button\" class=\"ngx-guide__close\" (click)=\"done()\">\n    done\n  </button>\n  \n  <div *ngIf=\"displayArrow\" [ngStyle]=\"customCss\" class=\"ngx-guide__arrow\" x-arrow></div>\n</div>",
-                        styles: [".ngx-guide{position:absolute;background:#ffc107;color:#fff;opacity:.85;width:150px;border-radius:3px;box-shadow:0 0 2px rgba(0,0,0,.5);padding:10px;text-align:center;z-index:9999}.ngx-guide:not(.visible){display:none}.ngx-guide .ngx-guide__arrow{width:0;height:0;border-style:solid;border-color:#ffc107;position:absolute;margin:5px}.ngx-guide[x-placement^=top]{margin-bottom:5px}.ngx-guide[x-placement^=top] .ngx-guide__arrow{border-width:5px 5px 0;border-left-color:transparent;border-right-color:transparent;border-bottom-color:transparent;bottom:-5px;left:calc(50% - 5px);margin-top:0;margin-bottom:0}.ngx-guide[x-placement^=bottom]{margin-top:10px}.ngx-guide[x-placement^=bottom] .ngx-guide__arrow{border-width:0 5px 5px;border-left-color:transparent;border-right-color:transparent;border-top-color:transparent;top:-5px;left:calc(50% - 5px);margin-top:0;margin-bottom:0}.ngx-guide[x-placement^=right]{margin-left:10px}.ngx-guide[x-placement^=right] .ngx-guide__arrow{border-width:5px 5px 5px 0;border-left-color:transparent;border-top-color:transparent;border-bottom-color:transparent;left:-5px;top:calc(50% - 5px);margin-left:0;margin-right:0}.ngx-guide[x-placement^=left]{margin-right:10px}.ngx-guide[x-placement^=left] .ngx-guide__arrow{border-width:5px 0 5px 5px;border-top-color:transparent;border-right-color:transparent;border-bottom-color:transparent;right:-5px;top:calc(50% - 5px);margin-left:0;margin-right:0}.overlay{top:0;bottom:0;left:0;right:0;opacity:.8;position:absolute;box-sizing:content-box;z-index:99;background-color:#000;opacity:.55;background:radial-gradient(center,ellipse farthest-corner,rgba(0,0,0,.4) 0,rgba(0,0,0,.9) 100%);transition:.3s ease-out}.helperLayer{padding:2px;box-sizing:content-box;position:absolute;z-index:9999998;background-color:rgba(255,255,255,.9);border:1px solid rgba(0,0,0,.5);border-radius:4px;box-shadow:0 2px 15px rgba(0,0,0,.4);transition:.3s ease-out}"]
+                        styles: [".ngx-guide{position:absolute;background:#ffc107;color:#fff;opacity:.85;width:150px;border-radius:3px;box-shadow:0 0 2px rgba(0,0,0,.5);padding:10px;text-align:center;z-index:9999}.ngx-guide:not(.visible){display:none}.ngx-guide .ngx-guide__arrow{width:0;height:0;border-style:solid;border-color:#ffc107;position:absolute;margin:5px}.ngx-guide[x-placement^=top]{margin-bottom:5px}.ngx-guide[x-placement^=top] .ngx-guide__arrow{border-width:5px 5px 0;border-left-color:transparent;border-right-color:transparent;border-bottom-color:transparent;bottom:-5px;left:calc(50% - 5px);margin-top:0;margin-bottom:0}.ngx-guide[x-placement^=bottom]{margin-top:10px}.ngx-guide[x-placement^=bottom] .ngx-guide__arrow{border-width:0 5px 5px;border-left-color:transparent;border-right-color:transparent;border-top-color:transparent;top:-5px;left:calc(50% - 5px);margin-top:0;margin-bottom:0}.ngx-guide[x-placement^=right]{margin-left:10px}.ngx-guide[x-placement^=right] .ngx-guide__arrow{border-width:5px 5px 5px 0;border-left-color:transparent;border-top-color:transparent;border-bottom-color:transparent;left:-5px;top:calc(50% - 5px);margin-left:0;margin-right:0}.ngx-guide[x-placement^=left]{margin-right:10px}.ngx-guide[x-placement^=left] .ngx-guide__arrow{border-width:5px 0 5px 5px;border-top-color:transparent;border-right-color:transparent;border-bottom-color:transparent;right:-5px;top:calc(50% - 5px);margin-left:0;margin-right:0}.overlay{top:0;bottom:0;left:0;right:0;opacity:.8;position:absolute;box-sizing:content-box;z-index:99;background-color:#000;opacity:.55;background:radial-gradient(center,ellipse farthest-corner,rgba(0,0,0,.4) 0,rgba(0,0,0,.9) 100%);-webkit-transition:.3s ease-out;transition:.3s ease-out}.helperLayer{padding:2px;box-sizing:content-box;position:absolute;z-index:9999998;background-color:rgba(255,255,255,.9);border:1px solid rgba(0,0,0,.5);border-radius:4px;box-shadow:0 2px 15px rgba(0,0,0,.4);-webkit-transition:.3s ease-out;transition:.3s ease-out}"]
                     }] }
         ];
         /** @nocollapse */
-        GuideContentComponent.ctorParameters = function () {
-            return [
-                { type: i0.ElementRef },
-                { type: i0.Renderer2 },
-                { type: i0.ElementRef },
-                { type: NgGuideWalkLibService }
-            ];
-        };
+        GuideContentComponent.ctorParameters = function () { return [
+            { type: core.ElementRef },
+            { type: core.Renderer2 },
+            { type: core.ElementRef },
+            { type: NgGuideWalkLibService }
+        ]; };
         GuideContentComponent.propDecorators = {
-            shouldCreateOverlay: [{ type: i0.Input }],
-            modifiers: [{ type: i0.Input }],
-            positionFixed: [{ type: i0.Input }],
-            eventsEnabled: [{ type: i0.Input }],
-            target: [{ type: i0.Input }],
-            location: [{ type: i0.Input }],
-            displayArrow: [{ type: i0.Input }],
-            customCss: [{ type: i0.Input }],
-            step: [{ type: i0.Input }]
+            shouldCreateOverlay: [{ type: core.Input }],
+            modifiers: [{ type: core.Input }],
+            positionFixed: [{ type: core.Input }],
+            eventsEnabled: [{ type: core.Input }],
+            target: [{ type: core.Input }],
+            location: [{ type: core.Input }],
+            displayArrow: [{ type: core.Input }],
+            customCss: [{ type: core.Input }],
+            step: [{ type: core.Input }]
         };
         return GuideContentComponent;
     }());
+    if (false) {
+        /**
+         * @type {?}
+         * @private
+         */
+        GuideContentComponent.prototype.currentAction;
+        /**
+         * @type {?}
+         * @private
+         */
+        GuideContentComponent.prototype._step;
+        /**
+         * @type {?}
+         * @private
+         */
+        GuideContentComponent.prototype.popper;
+        /** @type {?} */
+        GuideContentComponent.prototype.show;
+        /** @type {?} */
+        GuideContentComponent.prototype.overlayObject;
+        /** @type {?} */
+        GuideContentComponent.prototype.shouldCreateOverlay;
+        /** @type {?} */
+        GuideContentComponent.prototype.modifiers;
+        /** @type {?} */
+        GuideContentComponent.prototype.positionFixed;
+        /** @type {?} */
+        GuideContentComponent.prototype.eventsEnabled;
+        /** @type {?} */
+        GuideContentComponent.prototype.target;
+        /** @type {?} */
+        GuideContentComponent.prototype.location;
+        /** @type {?} */
+        GuideContentComponent.prototype.displayArrow;
+        /** @type {?} */
+        GuideContentComponent.prototype.customCss;
+        /**
+         * @type {?}
+         * @private
+         */
+        GuideContentComponent.prototype._element;
+        /**
+         * @type {?}
+         * @private
+         */
+        GuideContentComponent.prototype._renderer;
+        /**
+         * @type {?}
+         * @private
+         */
+        GuideContentComponent.prototype.host;
+        /**
+         * @type {?}
+         * @private
+         */
+        GuideContentComponent.prototype.guideService;
+    }
 
     /**
      * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+     * Generated from: lib/ng-guide-step.directive.ts
+     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     var NgGuideStepDirective = /** @class */ (function () {
         function NgGuideStepDirective(document, elementRef, viewContainerRef, renderer, injector, resolver, walkLibService) {
@@ -383,24 +486,26 @@
             this.overlay = null;
             this.position = 'below';
             this._step = 1;
-            this.rootElement = 'body';
+            this.rootElement = 'app-root';
             this.ngGuideStepLocation = 'bottom';
             this.ngGuideStepStyle = null;
             this.ngGuideStepDisplayArrow = true;
             this.ngGuideStepOverlay = true;
             this.ngGuideStepFocusElement = true;
-            this.ngGuideStepStepStatus = new i0.EventEmitter();
+            this.ngGuideStepStepStatus = new core.EventEmitter();
         }
         Object.defineProperty(NgGuideStepDirective.prototype, "step", {
             get: /**
              * @return {?}
-             */ function () {
+             */
+            function () {
                 return this._step;
             },
             set: /**
              * @param {?} stepNumber
              * @return {?}
-             */ function (stepNumber) {
+             */
+            function (stepNumber) {
                 this._step = toNumber(stepNumber);
             },
             enumerable: true,
@@ -412,252 +517,353 @@
         NgGuideStepDirective.prototype.ngOnInit = /**
          * @return {?}
          */
-            function () {
-                this.subscribeToGuideRequest();
-                this.walkLibService.register(( /** @type {?} */(this.step)));
-            };
+        function () {
+            this.subscribeToGuideRequest();
+            this.walkLibService.register((/** @type {?} */ (this.step)));
+        };
         /**
          * @return {?}
          */
         NgGuideStepDirective.prototype.ngOnDestroy = /**
          * @return {?}
          */
-            function () {
-                this.closeComponent();
-                this.walkLibService.unregister(( /** @type {?} */(this.step)));
-            };
+        function () {
+            this.closeComponent();
+            this.walkLibService.unregister((/** @type {?} */ (this.step)));
+        };
         /**
+         * @private
          * @return {?}
          */
         NgGuideStepDirective.prototype.closeComponent = /**
+         * @private
          * @return {?}
          */
-            function () {
-                if (!this.componentRef) {
-                    return;
-                }
-                this.ngGuideStepStepStatus.emit('BeforeClose');
-                this.componentRef.destroy();
-                this.componentRef = null;
-                this.ngGuideStepStepStatus.emit('AfterClose');
-            };
+        function () {
+            if (!this.componentRef) {
+                return;
+            }
+            this.ngGuideStepStepStatus.emit('BeforeClose');
+            this.componentRef.destroy();
+            this.componentRef = null;
+            this.ngGuideStepStepStatus.emit('AfterClose');
+        };
         /**
+         * @private
          * @return {?}
          */
         NgGuideStepDirective.prototype.generateComponent = /**
+         * @private
          * @return {?}
          */
-            function () {
-                this.ngGuideStepStepStatus.emit('BeforeOpen');
-                /** @type {?} */
-                var factory = this.resolver.resolveComponentFactory(GuideContentComponent);
-                /** @type {?} */
-                var content = this.generateNgContent();
-                this.componentRef = this.viewContainerRef.createComponent(factory, 0, null, content);
-                this.setInputs();
-                this.handleFocus();
-                this.handleOverlay();
-                this.ngGuideStepStepStatus.emit('Open');
-            };
+        function () {
+            this.ngGuideStepStepStatus.emit('BeforeOpen');
+            /** @type {?} */
+            var factory = this.resolver.resolveComponentFactory(GuideContentComponent);
+            /** @type {?} */
+            var content = this.generateNgContent();
+            this.componentRef = this.viewContainerRef.createComponent(factory, 0, null, content);
+            this.setInputs();
+            this.handleFocus();
+            this.handleOverlay();
+            this.ngGuideStepStepStatus.emit('Open');
+        };
         /**
+         * @private
          * @return {?}
          */
         NgGuideStepDirective.prototype.createComponent = /**
+         * @private
          * @return {?}
          */
-            function () {
-                this.generateComponent();
-            };
+        function () {
+            this.generateComponent();
+        };
         /**
          * @return {?}
          */
         NgGuideStepDirective.prototype.generateNgContent = /**
          * @return {?}
          */
-            function () {
-                // Content is string
-                if (typeof this.ngGuideStepContent === 'string') {
-                    /** @type {?} */
-                    var element = this.renderer.createText(this.ngGuideStepContent);
-                    return [[element]];
-                }
-                // Content is Template
-                if (this.ngGuideStepContent instanceof i0.TemplateRef) {
-                    /** @type {?} */
-                    var viewRefTemplate = this.ngGuideStepContent.createEmbeddedView({});
-                    return [viewRefTemplate.rootNodes];
-                }
-                // Else it's a component
+        function () {
+            // Content is string
+            if (typeof this.ngGuideStepContent === 'string') {
                 /** @type {?} */
-                var factory = this.resolver.resolveComponentFactory(this.ngGuideStepContent);
+                var element = this.renderer.createText(this.ngGuideStepContent);
+                return [[element]];
+            }
+            // Content is Template
+            if (this.ngGuideStepContent instanceof core.TemplateRef) {
                 /** @type {?} */
-                var viewRef = factory.create(this.injector);
-                return [[viewRef.location.nativeElement]];
-            };
+                var viewRefTemplate = this.ngGuideStepContent.createEmbeddedView({});
+                return [viewRefTemplate.rootNodes];
+            }
+            // Else it's a component
+            /** @type {?} */
+            var factory = this.resolver.resolveComponentFactory(this.ngGuideStepContent);
+            /** @type {?} */
+            var viewRef = factory.create(this.injector);
+            return [[viewRef.location.nativeElement]];
+        };
         /**
+         * @private
          * @return {?}
          */
         NgGuideStepDirective.prototype.setInputs = /**
+         * @private
          * @return {?}
          */
-            function () {
-                /** @type {?} */
-                var instanceRef = this.componentRef.instance;
-                instanceRef.step = ( /** @type {?} */(this.step));
-                instanceRef.target = this.elementRef.nativeElement;
-                instanceRef.location = this.ngGuideStepLocation || 'bottom';
-                instanceRef.displayArrow = this.ngGuideStepDisplayArrow;
-                if (this.ngGuideStepStyle) {
-                    instanceRef.customCss = this.ngGuideStepStyle;
-                }
-            };
+        function () {
+            /** @type {?} */
+            var instanceRef = this.componentRef.instance;
+            instanceRef.step = (/** @type {?} */ (this.step));
+            instanceRef.target = this.elementRef.nativeElement;
+            instanceRef.location = this.ngGuideStepLocation || 'bottom';
+            instanceRef.displayArrow = this.ngGuideStepDisplayArrow;
+            if (this.ngGuideStepStyle) {
+                instanceRef.customCss = this.ngGuideStepStyle;
+            }
+        };
         /**
+         * @private
          * @return {?}
          */
         NgGuideStepDirective.prototype.subscribeToGuideRequest = /**
+         * @private
          * @return {?}
          */
-            function () {
-                var _this = this;
-                this.walkLibService.getStepObservable(( /** @type {?} */(this.step)))
-                    .pipe(operators.takeUntil(unsignedOnDestroyed(this)))
-                    .subscribe(function (walkEvent) { return walkEvent.event === 'open' ? _this.createComponent() : _this.closeComponent(); });
-            };
+        function () {
+            var _this = this;
+            this.walkLibService.getStepObservable((/** @type {?} */ (this.step)))
+                .pipe(operators.takeUntil(unsignedOnDestroyed(this)))
+                .subscribe((/**
+             * @param {?} walkEvent
+             * @return {?}
+             */
+            function (walkEvent) { return walkEvent.event === 'open' ? _this.createComponent() : _this.closeComponent(); }));
+        };
         /**
+         * @private
          * @param {?} element
          * @return {?}
          */
         NgGuideStepDirective.prototype.getOffset = /**
+         * @private
          * @param {?} element
          * @return {?}
          */
-            function (element) {
-                /** @type {?} */
-                var body = document.body;
-                /** @type {?} */
-                var docEl = document.documentElement;
-                /** @type {?} */
-                var scrollTop = window.pageYOffset || docEl.scrollTop || body.scrollTop;
-                /** @type {?} */
-                var scrollLeft = window.pageXOffset || docEl.scrollLeft || body.scrollLeft;
-                /** @type {?} */
-                var x = element.getBoundingClientRect();
-                return {
-                    top: x.top + scrollTop,
-                    width: x.width,
-                    height: x.height,
-                    left: x.left + scrollLeft
-                };
+        function (element) {
+            /** @type {?} */
+            var body = document.body;
+            /** @type {?} */
+            var docEl = document.documentElement;
+            /** @type {?} */
+            var scrollTop = window.pageYOffset || docEl.scrollTop || body.scrollTop;
+            /** @type {?} */
+            var scrollLeft = window.pageXOffset || docEl.scrollLeft || body.scrollLeft;
+            /** @type {?} */
+            var x = element.getBoundingClientRect();
+            return {
+                top: x.top + scrollTop,
+                width: x.width,
+                height: x.height,
+                left: x.left + scrollLeft
             };
+        };
         /**
+         * @private
          * @return {?}
          */
         NgGuideStepDirective.prototype.handleOverlay = /**
+         * @private
          * @return {?}
          */
-            function () {
-                var _this = this;
-                if (toBoolean(this.ngGuideStepOverlay)) {
-                    this.overlay = this.renderer.createElement('div');
-                    // this.overlay.className = 'overlay';
-                    this.renderer.addClass(this.overlay, 'overlay');
-                    this.renderer.appendChild(this.getRootElement(), this.overlay);
-                    /** @type {?} */
-                    var targetElm = this.elementRef.nativeElement;
-                    // if (!targetElm.tagName || targetElm.tagName.toLowerCase() === 'body') {
-                    //   const styleText = 'top: 0;bottom: 0; left: 0;right: 0;position: fixed;';
-                    //   this.overlay.style.cssText = styleText;
-                    // } else {
-                    //   // set overlay layer position
-                    //   const elementPosition = this.getOffset(targetElm);
-                    //   if (elementPosition) {
-                    //     const styleText = 'width: ' + elementPosition.width + 'px; height:' 
-                    //     + elementPosition.height + 'px; top:' + elementPosition.top + 'px;left: ' + elementPosition.left + 'px;';
-                    //     this.overlay.style.cssText = styleText;
-                    //    }
-                    // }
-                    this.renderer.addClass(this.elementRef.nativeElement, 'helperLayer');
-                    this.componentRef.onDestroy(function () {
-                        _this.renderer.removeChild(_this.getRootElement(), _this.overlay);
-                        _this.renderer.removeClass(_this.elementRef.nativeElement, 'helperLayer');
-                    });
-                    // this.renderer.addClass(this.elementRef.nativeElement, 'overlay');
-                    // this.componentRef.onDestroy(() => {
-                    //  this.renderer.removeClass(this.elementRef.nativeElement, 'overlay');
-                    // });
-                }
-            };
+        function () {
+            var _this = this;
+            if (toBoolean(this.ngGuideStepOverlay)) {
+                this.overlay = this.renderer.createElement('div');
+                // this.overlay.className = 'overlay';
+                this.renderer.addClass(this.overlay, 'overlay');
+                this.tryAddOverlay();
+                /** @type {?} */
+                var targetElm = this.elementRef.nativeElement;
+                this.renderer.addClass(targetElm, 'helperLayer');
+                this.componentRef.onDestroy((/**
+                 * @return {?}
+                 */
+                function () {
+                    _this.renderer.removeChild(_this.getRootElement(), _this.overlay);
+                    _this.renderer.removeClass(_this.elementRef.nativeElement, 'helperLayer');
+                }));
+                // this.renderer.addClass(this.elementRef.nativeElement, 'overlay');
+                // this.componentRef.onDestroy(() => {
+                //  this.renderer.removeClass(this.elementRef.nativeElement, 'overlay');
+                // });
+            }
+        };
         /**
+         * @private
+         * @return {?}
+         */
+        NgGuideStepDirective.prototype.tryAddOverlay = /**
+         * @private
+         * @return {?}
+         */
+        function () {
+            try {
+                this.renderer.appendChild(this.getRootElement(), this.overlay);
+            }
+            catch (e) { }
+        };
+        /**
+         * @private
          * @return {?}
          */
         NgGuideStepDirective.prototype.handleFocus = /**
+         * @private
          * @return {?}
          */
-            function () {
-                if (toBoolean(this.ngGuideStepFocusElement)) {
-                    this.elementRef.nativeElement.focus();
-                }
-            };
+        function () {
+            if (toBoolean(this.ngGuideStepFocusElement)) {
+                this.elementRef.nativeElement.focus();
+            }
+        };
         /**
+         * @private
          * @return {?}
          */
         NgGuideStepDirective.prototype.getRootElement = /**
+         * @private
          * @return {?}
          */
-            function () {
-                return this.document ? this.document.body : this.getRootOfAllElement();
-            };
+        function () {
+            return !this.document ? this.document.body : this.getRootOfAllElement();
+        };
         /**
+         * @private
          * @return {?}
          */
         NgGuideStepDirective.prototype.getRootOfAllElement = /**
+         * @private
          * @return {?}
          */
-            function () {
-                /** @type {?} */
-                var last = this.renderer.parentNode(this.elementRef.nativeElement);
-                /** @type {?} */
-                var res = null;
-                while (last && last.localName !== this.rootElement) {
-                    res = last;
-                    last = this.renderer.parentNode(res);
-                }
-                return res;
-            };
+        function () {
+            /** @type {?} */
+            var last = this.renderer.parentNode(this.elementRef.nativeElement);
+            /** @type {?} */
+            var res = null;
+            while (last && last.localName !== this.rootElement) {
+                res = last;
+                last = this.renderer.parentNode(res);
+            }
+            if (last) {
+                res = last;
+            }
+            return res;
+        };
         NgGuideStepDirective.decorators = [
-            { type: i0.Directive, args: [{
+            { type: core.Directive, args: [{
                         selector: '[ngGuideStep]',
                     },] }
         ];
         /** @nocollapse */
-        NgGuideStepDirective.ctorParameters = function () {
-            return [
-                { type: undefined, decorators: [{ type: i0.Inject, args: [common.DOCUMENT,] }] },
-                { type: i0.ElementRef },
-                { type: i0.ViewContainerRef },
-                { type: i0.Renderer2 },
-                { type: i0.Injector },
-                { type: i0.ComponentFactoryResolver },
-                { type: NgGuideWalkLibService }
-            ];
-        };
+        NgGuideStepDirective.ctorParameters = function () { return [
+            { type: undefined, decorators: [{ type: core.Inject, args: [common.DOCUMENT,] }] },
+            { type: core.ElementRef },
+            { type: core.ViewContainerRef },
+            { type: core.Renderer2 },
+            { type: core.Injector },
+            { type: core.ComponentFactoryResolver },
+            { type: NgGuideWalkLibService }
+        ]; };
         NgGuideStepDirective.propDecorators = {
-            rootElement: [{ type: i0.Input }],
-            step: [{ type: i0.Input, args: ['ngGuideStep',] }],
-            ngGuideStepContent: [{ type: i0.Input, args: ['ngGuideStepContent',] }],
-            ngGuideStepLocation: [{ type: i0.Input, args: ['ngGuideStepLocation',] }],
-            ngGuideStepStyle: [{ type: i0.Input, args: ['ngGuideStepStyle',] }],
-            ngGuideStepDisplayArrow: [{ type: i0.Input, args: ['ngGuideStepDisplayArrow',] }],
-            ngGuideStepOverlay: [{ type: i0.Input, args: ['ngGuideStepOverlay',] }],
-            ngGuideStepFocusElement: [{ type: i0.Input, args: ['ngGuideStepFocusElement',] }],
-            ngGuideStepStepStatus: [{ type: i0.Output, args: ['ngGuideStepStepStatus',] }]
+            rootElement: [{ type: core.Input }],
+            step: [{ type: core.Input, args: ['ngGuideStep',] }],
+            ngGuideStepContent: [{ type: core.Input, args: ['ngGuideStepContent',] }],
+            ngGuideStepLocation: [{ type: core.Input, args: ['ngGuideStepLocation',] }],
+            ngGuideStepStyle: [{ type: core.Input, args: ['ngGuideStepStyle',] }],
+            ngGuideStepDisplayArrow: [{ type: core.Input, args: ['ngGuideStepDisplayArrow',] }],
+            ngGuideStepOverlay: [{ type: core.Input, args: ['ngGuideStepOverlay',] }],
+            ngGuideStepFocusElement: [{ type: core.Input, args: ['ngGuideStepFocusElement',] }],
+            ngGuideStepStepStatus: [{ type: core.Output, args: ['ngGuideStepStepStatus',] }]
         };
         return NgGuideStepDirective;
     }());
+    if (false) {
+        /**
+         * @type {?}
+         * @private
+         */
+        NgGuideStepDirective.prototype.overlay;
+        /** @type {?} */
+        NgGuideStepDirective.prototype.position;
+        /**
+         * @type {?}
+         * @private
+         */
+        NgGuideStepDirective.prototype._step;
+        /** @type {?} */
+        NgGuideStepDirective.prototype.rootElement;
+        /** @type {?} */
+        NgGuideStepDirective.prototype.ngGuideStepContent;
+        /** @type {?} */
+        NgGuideStepDirective.prototype.ngGuideStepLocation;
+        /** @type {?} */
+        NgGuideStepDirective.prototype.ngGuideStepStyle;
+        /** @type {?} */
+        NgGuideStepDirective.prototype.ngGuideStepDisplayArrow;
+        /** @type {?} */
+        NgGuideStepDirective.prototype.ngGuideStepOverlay;
+        /** @type {?} */
+        NgGuideStepDirective.prototype.ngGuideStepFocusElement;
+        /** @type {?} */
+        NgGuideStepDirective.prototype.ngGuideStepStepStatus;
+        /**
+         * @type {?}
+         * @private
+         */
+        NgGuideStepDirective.prototype.componentRef;
+        /**
+         * @type {?}
+         * @private
+         */
+        NgGuideStepDirective.prototype.document;
+        /**
+         * @type {?}
+         * @private
+         */
+        NgGuideStepDirective.prototype.elementRef;
+        /**
+         * @type {?}
+         * @private
+         */
+        NgGuideStepDirective.prototype.viewContainerRef;
+        /**
+         * @type {?}
+         * @private
+         */
+        NgGuideStepDirective.prototype.renderer;
+        /**
+         * @type {?}
+         * @private
+         */
+        NgGuideStepDirective.prototype.injector;
+        /**
+         * @type {?}
+         * @private
+         */
+        NgGuideStepDirective.prototype.resolver;
+        /**
+         * @type {?}
+         * @private
+         */
+        NgGuideStepDirective.prototype.walkLibService;
+    }
 
     /**
      * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+     * Generated from: lib/ng-guide-walk-lib.module.ts
+     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     var NgGuideWalkLibModule = /** @class */ (function () {
         function NgGuideWalkLibModule() {
@@ -668,19 +874,19 @@
         NgGuideWalkLibModule.forRoot = /**
          * @return {?}
          */
-            function () {
-                return {
-                    ngModule: NgGuideWalkLibModule,
-                    providers: [
-                        {
-                            provide: NgGuideWalkLibService,
-                            useClass: NgGuideWalkLibService
-                        }
-                    ]
-                };
+        function () {
+            return {
+                ngModule: NgGuideWalkLibModule,
+                providers: [
+                    {
+                        provide: NgGuideWalkLibService,
+                        useClass: NgGuideWalkLibService
+                    }
+                ]
             };
+        };
         NgGuideWalkLibModule.decorators = [
-            { type: i0.NgModule, args: [{
+            { type: core.NgModule, args: [{
                         imports: [
                             common.CommonModule,
                         ],
@@ -698,24 +904,13 @@
         return NgGuideWalkLibModule;
     }());
 
-    /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
-     */
-
-    /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
-     */
-
-    exports.NgGuideWalkLibService = NgGuideWalkLibService;
+    exports.GuideContentComponent = GuideContentComponent;
+    exports.NgGuideStepDirective = NgGuideStepDirective;
     exports.NgGuideWalkLibComponent = NgGuideWalkLibComponent;
     exports.NgGuideWalkLibModule = NgGuideWalkLibModule;
-    exports.NgGuideStepDirective = NgGuideStepDirective;
-    exports.GuideContentComponent = GuideContentComponent;
+    exports.NgGuideWalkLibService = NgGuideWalkLibService;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
-
 //# sourceMappingURL=ng-guide-walk.umd.js.map
