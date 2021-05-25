@@ -31,7 +31,7 @@
     "@angular/platform-browser": "^8.2.14",
     "@angular/platform-browser-dynamic": "^8.2.14",
     "@angular/router": "^8.2.14",
-    "browserslist": "^4.8.3",
+    "browserslist": "^4.16.5",
     "caniuse-lite": "^1.0.30001019",
     "core-js": "^3.6.2",
     "ng-guide-walk": "0.0.8",
